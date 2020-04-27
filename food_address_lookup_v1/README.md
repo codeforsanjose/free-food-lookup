@@ -1,3 +1,11 @@
+## Note from designer
+
+[Current live site](https://gis.sanjoseca.gov/maps/covid19foodpublic/addresslookup/)
+[Figma mockups](https://www.figma.com/file/NrW597pIrutfoRwm3pdVLs/Food-Lookup-Tool?node-id=0%3A1)
+
+Email Julie if you have questions: julie.kim@sanjoseca.gov
+
+
 # Multi-Level Accordion Menu
 
 A simple CSS accordion menu with support for sub level items.
