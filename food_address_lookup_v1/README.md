@@ -1,4 +1,4 @@
-## Notes from designer
+## Notes from Designer
 
 [Current live site](https://gis.sanjoseca.gov/maps/covid19foodpublic/addresslookup/)
 
