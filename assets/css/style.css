@@ -2414,7 +2414,7 @@ box-shadow:0 0 0 3px var(--color-shadow)}
 font-size:0.83333em;
 font-size:var(--text-sm)}
 :root{
---cd-color-1:hsl(218, 7%, 32%);
+--cd-color-1:hsl(193, 44%, 37%);
 --cd-color-1-h:218;
 --cd-color-1-s:7%;
 --cd-color-1-l:32%;
@@ -2431,6 +2431,16 @@ color:rgba(0,0,0,0.5)}
 h1{
 font-weight:bold;
 color:rgba(0,0,0,0.9)}
+.footer{
+background-color:var(--cd-color-1);
+font-size:10pt;
+padding:0;
+margin:0;}
+.footer a{
+text-decoration:none;
+color:white;}
+.footer-highlight{
+background-color:#498494;}
 .cd-accordion{
 background:hsl(218, 7%, 32%);
 background:var(--cd-color-1);

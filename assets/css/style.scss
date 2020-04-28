@@ -9,7 +9,7 @@
 
 :root {
   // colors
-  @include defineColorHSL(--cd-color-1, 218, 7%, 32%);  // Abbey
+  @include defineColorHSL(--cd-color-1, 193, 44%, 37%); // Astral
   @include defineColorHSL(--cd-color-2, 127, 83%, 80%); // Gossip
 
   // font
@@ -27,6 +27,21 @@ body {
 h1 {
 	font-weight: bold;
   color: rgba(black, 0.9);
+}
+
+.footer {
+    background-color: var(--cd-color-1);
+    font-size: 10pt;
+    padding: 0;
+    margin: 0;
+}
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-highlight {
+  background-color: #498494;
 }
 
 .cd-accordion {
