@@ -1,5 +1,5 @@
 # Find Free Food Near Me
-A lookup tool for Santa Clara County residents to find programs like free school meals and groceries near them
+Look up free meal and groceries in  Santa Clara County to get through the  COVID-19 crisis
 
 ## Notes from Designer
 
