@@ -56,7 +56,7 @@
 	#accordionMain {color:white}
   </style>
 </head>
-<body style="padding: 5em 0">
+<body style="padding: 5em 0 0 0">
 <section class="container max-width-sm">
 
      <div class="text-component text-center" id="addressContainer">
@@ -91,24 +91,54 @@
   <div id="addressSearchSuggest"></div>
   <!--END Address Box-->
 
-	<!--Main content. ID accordionMain innerHTML will get replaced by HTML from javascript-->
+  <div id="lookup-cta" style="padding: 30px;">
+      <p style="font-size: +1em"><strong>Look up the following near you:</strong></p>
+      <ul style="padding: 10px;">
+          <li><img alt="Senior Meal programs" src="assets/img/icon_senior.png" /> <strong>Senior meal programs</strong> for seniors 60 yrs & older </li>
+          <li><img alt="School meal programs" src="assets/img/icon_school.png" /> <strong>School meal programs</strong> for youth 18 yrs & younger </li>
+          <li><img alt="Community meal programs" src="assets/img/icon_community.png" /> <strong>Community meal programs</strong> serving all ages</li>
+          <li><img alt="Grocery programs" src="assets/img/icon_grocery.png" /> <strong>Grocery programs</strong> for low-income residents</li>
+      </ul>
+  </div>
+
+  <!--Main content. ID accordionMain innerHTML will get replaced by HTML from javascript-->
 	<ul class="cd-accordion cd-accordion--animated margin-top-lg margin-bottom-lg" id="accordionMain">
-		&nbsp;<br />
-		<center><table><tr><td><img src='assets/img/logo_sanjose_white.png' height='70px' />&nbsp; &nbsp;</td><td>&nbsp; &nbsp;<img src='assets/img/logo_county.png' height='80px' /></td></tr></table></center>
-		<ul style="padding:30px;">Look up the following near you:
-<li>[icon] Senior meal programs for seniors 60 yrs & older </li>
-<li>[icon] School meal programs  for youth 18 yrs & younger </li>
-<li>[icon] Community meal programs serving all ages</li> 
-<li>[icon] Grocery programs for low-income residents</li> 
-	</ul>
-	<!--END Main content-->
+  </ul>
+  <!--END Main content-->
 	
-	<!--Map button, just using the address style classes again
-	<div class="text-component text-center" id="mapLinkContainer" onclick="window.location.href = 'https://gis.sanjoseca.gov/maps/covid19foodpublic'">
-		<center><img style="vertical-align:middle; display:inline;" src='assets/img/icon_map.png' height="60px" /><span id="mapLinkTitle">View as a Map</span></center>
-	</div>
-	<!--END Map button-->
 </section>
+
+<footer class="footer margin-top-lg">
+    <!--Map button, just using the address style classes again-->
+    <table style="padding-top: 20px; padding-bottom: 20px; display: inline-block; width: 100%">
+        <tbody>
+            <tr>
+                <td>
+                    <div style="margin-bottom: 10px; margin-left: 10px;">
+                        <a href="https://gis.sanjoseca.gov/maps/covid19foodpublic">
+                            <div class="footer-highlight" id="mapLinkContainer" style="padding: 10px; width:240px; display:inline-block">
+                                <img style="vertical-align:middle; display:inline; border: 0" src="assets/img/icon_map.png" height="30px" />
+                                <span id="mapLinkTitle">Map View</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div style="margin-left: 10px">
+                        <a href="#">
+                            <div class="footer-highlight" id="mapLinkContainer" style="padding: 10px; width:240px; display:inline-block">
+                                <img style="vertical-align:middle; display:inline; border: 0" src="assets/img/icon_map.png" height="30px" />
+                                <span id="mapLinkTitle">Download Food Program PDF</span>
+                            </div>
+                        </a>
+                    </div>
+                </td>
+                <td style="width: 100%; text-align: center">
+                    <img src='assets/img/logo_sanjose_white.png' height='70px' />&nbsp; &nbsp;<img src='assets/img/logo_county.png' height='80px' />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!--END Map button-->
+</footer>
 <script src="assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/csj_addressgeocodercounty.js"></script><!-- functions that operate the ArcGIS Server geocoder -->
