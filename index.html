@@ -14,8 +14,6 @@
 		body {
 			background-color: #F2F2F2;
 			color: #000000;
-			background-image: url('assets/img/logo_sanjose_white.png');
-			background-repeat: no-repeat;
 			height: 100%;
 		}
 
@@ -156,11 +154,68 @@
 		li {
 			list-style-type: none;
 		}
+
+		.blk_icon {
+			width: 50px;
+			margin-bottom: -20px;
+		}
+
+		.whte_icon {
+			width: 50px;
+		}
+
+		.meals_li {
+			margin: 10px 0px;
+		}
+
+		#plate_wtrmrk {
+			opacity: 0.5;
+			position: absolute;
+			top: 0;
+			right: 10%;
+		}
+
+		#grocery_wtrmrk {
+			opacity: 0.5;
+			position: absolute;
+			top: 400px;
+			right: 10%;
+			width: 275px;
+		}
+
+		@media screen and (max-width: 600px) {
+			#grocery_wtrmrk {
+				display: none;
+			}
+
+			#plate_wtrmrk {
+				position: static;
+				width: 200px;
+				margin: 0 auto;
+				display: block;
+				margin-bottom: -80px;
+			}
+
+			h1 {
+				font-size: 30px;
+			}
+
+			.meals_li_p {
+				width: 80%;
+			}
+
+			.blk_icon {
+				width: 50px;
+				margin-bottom: -5px;
+			}
+		}
 	</style>
 </head>
 
 <body>
 	<div id="container" style="min-height: 100%; width: 100%; position: relative">
+		<img id="plate_wtrmrk" src="./assets/img/plate_watermark.png" alt="plate with utensils">
+		<img id="grocery_wtrmrk" src="./assets/img/grocery_watermark.png" alt="bag of groceries">
 		<div style="padding-bottom: 200px">
 			<section class="container max-width-sm" style="padding-top: 5em">
 
@@ -184,28 +239,34 @@
 				</div>
 				<!-- Radio buttons -->
 				<div class=addressContainer style="padding-top:40px;">
-                    <div class="distance-row" style="display:inline-block;padding-bottom:10px;">
-                        <div class="distance-option-container" style="padding-right:10px;width:min-content;display:inline;">
-                            <input type="radio" id="label1Mile" name="gender" value="1609" onchange="onChangeOfRadio()">
-                            <!--value is in meters-->
-                            <label for="label1Mile" class="labelMiles">Walking&nbsp;(1&nbsp;Mile)&nbsp;</label>
-                        </div>
-                        <div class="distance-option-container" style="padding-right:10px;width:min-content;display:inline;">
-                            <input type="radio" id="label2Miles" name="gender" value="3218" onchange="onChangeOfRadio()"
-                                   checked>
-                            <label for="label2Miles" class="labelMiles">Biking&nbsp;(2&nbsp;Miles)&nbsp;</label>
-                        </div>
-                    </div>
-                    <div class="distance-row" style="display:inline-block;padding-bottom:10px;">
-                        <div class="distance-option-container" style="padding-right:10px;width:min-content;display:inline;">
-                            <input type="radio" id="label5Miles" name="gender" value="8046" onchange="onChangeOfRadio()">
-                            <label for="label5Miles" class="labelMiles">Driving&nbsp;(5&nbsp;Miles)&nbsp;</label>
-                        </div>
-                        <div class="distance-option-container" style="padding-right:10px;width:min-content;display:inline;">
-                            <input type="radio" id="label10Miles" name="gender" value="16093" onchange="onChangeOfRadio()">
-                            <label for="label10Miles" class="labelMiles">Driving&nbsp;(10&nbsp;Miles)&nbsp;</label>
-                        </div>
-                    </div>
+					<div class="distance-row" style="display:inline-block;padding-bottom:10px;">
+						<div class="distance-option-container"
+							style="padding-right:10px;width:min-content;display:inline;">
+							<input type="radio" id="label1Mile" name="gender" value="1609" onchange="onChangeOfRadio()">
+							<!--value is in meters-->
+							<label for="label1Mile" class="labelMiles">Walking&nbsp;(1&nbsp;Mile)&nbsp;</label>
+						</div>
+						<div class="distance-option-container"
+							style="padding-right:10px;width:min-content;display:inline;">
+							<input type="radio" id="label2Miles" name="gender" value="3218" onchange="onChangeOfRadio()"
+								checked>
+							<label for="label2Miles" class="labelMiles">Biking&nbsp;(2&nbsp;Miles)&nbsp;</label>
+						</div>
+					</div>
+					<div class="distance-row" style="display:inline-block;padding-bottom:10px;">
+						<div class="distance-option-container"
+							style="padding-right:10px;width:min-content;display:inline;">
+							<input type="radio" id="label5Miles" name="gender" value="8046"
+								onchange="onChangeOfRadio()">
+							<label for="label5Miles" class="labelMiles">Driving&nbsp;(5&nbsp;Miles)&nbsp;</label>
+						</div>
+						<div class="distance-option-container"
+							style="padding-right:10px;width:min-content;display:inline;">
+							<input type="radio" id="label10Miles" name="gender" value="16093"
+								onchange="onChangeOfRadio()">
+							<label for="label10Miles" class="labelMiles">Driving&nbsp;(10&nbsp;Miles)&nbsp;</label>
+						</div>
+					</div>
 				</div>
 
 				<div id="addressSearchSuggest"></div>
@@ -216,14 +277,29 @@
 					<div id="lookup-cta" style=" color: black">
 						<p style="font-size: +1em"><strong>Look up the following near you:</strong></p>
 						<ul style="padding: 10px;">
-							<li><img alt="Senior Meal programs" src="assets/img/icon_senior.png" /> <strong>Senior meal
-									programs</strong> for seniors 60 yrs & older </li>
-							<li><img alt="School meal programs" src="assets/img/icon_school.png" /> <strong>School meal
-									programs</strong> for youth 18 yrs & younger </li>
-							<li><img alt="Community meal programs" src="assets/img/icon_community.png" />
-								<strong>Community meal programs</strong> serving all ages</li>
-							<li><img alt="Grocery programs" src="assets/img/icon_grocery.png" /> <strong>Grocery
-									programs</strong> for low-income residents</li>
+							<li class="meals_li"><img alt="Senior Meal programs" class="blk_icon"
+									src="assets/img/icon_senior_black.png" />
+								<p class="meals_li_p" style="display:inline-block"><strong>Senior
+										meal
+										programs</strong> for seniors 60 yrs & older </p>
+							</li>
+							<li class="meals_li"><img alt="School meal programs" class="blk_icon"
+									src="assets/img/icon_school_black.png" />
+								<p class="meals_li_p" style="display:inline-block"><strong>School
+										meal
+										programs</strong> for youth 18 yrs & younger </p>
+							</li>
+							<li class="meals_li"><img alt="Community meal programs" class="blk_icon"
+									src="assets/img/icon_community_black.png" />
+								<p class="meals_li_p" style="display:inline-block"><strong>Community meal
+										programs</strong> serving all
+									ages</p>
+							</li>
+							<li class="meals_li"><img alt="Grocery programs" class="blk_icon"
+									src="assets/img/icon_grocery_black.png" />
+								<p class="meals_li_p" style="display:inline-block"><strong>Grocery
+										programs</strong> for low-income residents</p>
+							</li>
 						</ul>
 					</div>
 					<ul class="cd-accordion cd-accordion--animated margin-top-lg margin-bottom-lg">
@@ -285,7 +361,7 @@
 	<li class="cd-accordion__item cd-accordion__item--has-children">\
 		  <input class="cd-accordion__input" type="checkbox" name ="group-1" id="group-1">\
 		  \
-		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-1"><img src="assets/img/icon_senior.png" class="imgInline" /><span id="labelSeniors">Group 1</span></label>\
+		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-1"><img class="whte_icon" src="assets/img/icon_senior_white.png" class="imgInline" /><span id="labelSeniors">Group 1</span></label>\
 		  <ul class="cd-accordion__sub cd-accordion__sub--l1" id="dataSeniors">\
 		  \
 		  \
@@ -295,7 +371,7 @@
 		<li class="cd-accordion__item cd-accordion__item--has-children">\
 		  <input class="cd-accordion__input" type="checkbox" name ="group-2" id="group-2">\
 		  \
-		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-2"><img src="assets/img/icon_school.png" class="imgInline" /><span id="labelSchools">Group 2</span></label>\
+		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-2"><img class="whte_icon" src="assets/img/icon_school_white.png" class="imgInline" /><span id="labelSchools">Group 2</span></label>\
 		  <ul class="cd-accordion__sub cd-accordion__sub--l1"  id="dataSchools">\
 		  \
 		  \
@@ -305,7 +381,7 @@
 		<li class="cd-accordion__item cd-accordion__item--has-children">\
 		  <input class="cd-accordion__input" type="checkbox" name ="group-3" id="group-3">\
 		  \
-		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-3"><img src="assets/img/icon_community.png" class="imgInline" /><span id="labelCommunity">Group 3</span></label>\
+		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-3"><img class="whte_icon" src="assets/img/icon_community_white.png" class="imgInline" /><span id="labelCommunity">Group 3</span></label>\
 		  <ul class="cd-accordion__sub cd-accordion__sub--l1"  id="dataCommunity">\
 		  \
 		  \
@@ -315,7 +391,7 @@
 		<li class="cd-accordion__item cd-accordion__item--has-children">\
 		  <input class="cd-accordion__input" type="checkbox" name ="group-4" id="group-4">\
 		  \
-		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-4"><img src="assets/img/icon_grocery.png" class="imgInline" /><span id="labelFoodBanks">Group 4</span></label>\
+		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-4"><img class="whte_icon" src="assets/img/icon_grocery_white.png" class="imgInline" /><span id="labelFoodBanks">Group 4</span></label>\
 		  <ul class="cd-accordion__sub cd-accordion__sub--l1" id="dataFoodBanks">\
 		  \
 		  \
