@@ -409,7 +409,7 @@
 
 			var injectionHtml = "";
 			if (data.length == 0) {
-				var injectionHeadingHtml = nameType + " <span class='textNone'>(None Nearby)</span>";
+				var injectionHeadingHtml = nameType + " <span class='textNone' style='color:white;'>(None Nearby)</span>";
 			} else {
 				for (i = 0; i < data.length; i++) { //Fills out each accordion span with innerHTML and injects it.
 					injectionHtml += '\
@@ -417,7 +417,7 @@
 				  <input class="cd-accordion__input" type="checkbox" name ="sub-group-' + dataType + i + '" id="sub-group-' +
 						dataType + i + '">\
 				  <label class="cd-accordion__label_teal cd-accordion__label_teal--icon-folder" for="sub-group-' + dataType + i +
-						'" style="background:#F6F6F6;">' +
+						'" style="background:#F6F6F6;border-bottom:1px solid #04586E;">' +
 						'<span class="textHeading" style="color:#04586E;">' + data[i].SiteName + ' ' +
 						'<span class="textDistance" style="color:#04586E;">' +
 						'(' + data[i].Distance +
