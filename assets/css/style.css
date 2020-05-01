@@ -41,8 +41,6 @@ display:none}
 table{
 border-collapse:collapse;
 border-spacing:0}
-img,video,svg{
-max-width:100%}
 [data-theme]{
 background-color:hsl(0, 0%, 100%);
 background-color:var(--color-bg, #fff);
