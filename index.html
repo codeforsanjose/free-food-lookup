@@ -8,7 +8,7 @@
   <title>Santa Clara County Food Options</title>
   <style>
     /* CSJ created styles. These styles override the styles that came with the app code. */
-    body {background-color:#F2F2F2; color:#000000; background-image:url('assets/img/logo_sanjose_white.png'); background-repeat: no-repeat;}
+   body {background-color:#F2F2F2; color:#000000; background-image:url('assets/img/logo_sanjose_white.png'); background-repeat: no-repeat; height: 100%;}
     
     .translated {font-size:20px; font-weight: 300; color:#333; text-decoration:none;}
       
@@ -56,90 +56,94 @@
 	#accordionMain {color:white}
   </style>
 </head>
-<body style="padding: 5em 0 0 0">
-<section class="container max-width-sm">
+<body>
+    <div id="container" style="min-height: 100%; width: 100%; position: fixed">
+        <div style="padding-bottom: 200px">
+            <section class="container max-width-sm" style="padding-top: 5em">
 
-     <div class="text-component text-center" id="addressContainer">
-      <!--<p><a href="https://codyhouse.co/gem/css-multi-level-accordion-menu" class="cd-article-link">Article & Download</a></p>-->
-      <h1>Find free food near me</h1>
-      <h1 class="translated">Encuentra comida gratis cerca de mí</h1>
-      <h1 class="translated">Tìm đồ ăn miễn phí gần tôi</h1>
-      
-      <!--START Address Box-->
-	  <div class="text-component text-center">
-	  <div></div>
-	  <h2 id="addressSearchTitle">Enter your address:</h2>
-      </div>
-	  
-	  <div>
-	  <input id="addressSearch" type="text" oninput="getSearchSuggestions(this.value)" onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}" />
-      </div>
-      
-      </div>
-	  <!-- Radio buttons -->
-	  <div class=addressContainer>
-	  <input type="radio" id="label1Mile" name="gender" value="1609" onchange="onChangeOfRadio()"><!--value is in meters-->
-		<label for="label1Mile" class="labelMiles">1 Mile&nbsp;</label>
-		<input type="radio" id="label2Miles" name="gender" value="3218" onchange="onChangeOfRadio()" checked>
-		<label for="label2Miles" class="labelMiles">2 Miles&nbsp;</label>
-		<input type="radio" id="label5Miles" name="gender" value="8046" onchange="onChangeOfRadio()">
-		<label for="label5Miles" class="labelMiles">5 Miles&nbsp;</label>
-		<input type="radio" id="label10Miles" name="gender" value="16093" onchange="onChangeOfRadio()">
-		<label for="label10Miles" class="labelMiles">10 Miles&nbsp;</label>
-      </div>
-        
-  <div id="addressSearchSuggest"></div>
-  <!--END Address Box-->
+                <div class="text-component text-center" id="addressContainer">
+                    <!--<p><a href="https://codyhouse.co/gem/css-multi-level-accordion-menu" class="cd-article-link">Article & Download</a></p>-->
+                    <h1>Find free food near me</h1>
+                    <h1 class="translated">Encuentra comida gratis cerca de mí</h1>
+                    <h1 class="translated">Tìm đồ ăn miễn phí gần tôi</h1>
 
-  <!--Main content. ID accordionMain innerHTML will get replaced by HTML from javascript-->
-  <div id="accordionMain" style="padding: 30px;">
-      <div id="lookup-cta" style=" color: black">
-          <p style="font-size: +1em"><strong>Look up the following near you:</strong></p>
-          <ul style="padding: 10px;">
-              <li><img alt="Senior Meal programs" src="assets/img/icon_senior.png" /> <strong>Senior meal programs</strong> for seniors 60 yrs & older </li>
-              <li><img alt="School meal programs" src="assets/img/icon_school.png" /> <strong>School meal programs</strong> for youth 18 yrs & younger </li>
-              <li><img alt="Community meal programs" src="assets/img/icon_community.png" /> <strong>Community meal programs</strong> serving all ages</li>
-              <li><img alt="Grocery programs" src="assets/img/icon_grocery.png" /> <strong>Grocery programs</strong> for low-income residents</li>
-          </ul>
-      </div>
-      <ul class="cd-accordion cd-accordion--animated margin-top-lg margin-bottom-lg">
-      </ul>
-  </div>
-  <!--END Main content-->
-	
-</section>
-
-<footer class="footer margin-top-lg">
-    <!--Map button, just using the address style classes again-->
-    <table style="padding-top: 20px; padding-bottom: 20px; display: inline-block; width: 100%">
-        <tbody>
-            <tr>
-                <td>
-                    <div style="margin-bottom: 10px; margin-left: 10px;">
-                        <a href="https://gis.sanjoseca.gov/maps/covid19foodpublic">
-                            <div class="footer-highlight" id="mapLinkContainer" style="padding: 10px; width:240px; display:inline-block">
-                                <img style="vertical-align:middle; display:inline; border: 0" src="assets/img/icon_map.png" height="30px" />
-                                <span id="mapLinkTitle">Map View</span>
-                            </div>
-                        </a>
+                    <!--START Address Box-->
+                    <div class="text-component text-center">
+                        <div></div>
+                        <h2 id="addressSearchTitle">Enter your address:</h2>
                     </div>
-                    <div style="margin-left: 10px">
-                        <a href="#">
-                            <div class="footer-highlight" id="mapLinkContainer" style="padding: 10px; width:240px; display:inline-block">
-                                <img style="vertical-align:middle; display:inline; border: 0" src="assets/img/icon_map.png" height="30px" />
-                                <span id="mapLinkTitle">Download Food Program PDF</span>
-                            </div>
-                        </a>
+
+                    <div>
+                        <input id="addressSearch" type="text" oninput="getSearchSuggestions(this.value)" onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}" />
                     </div>
-                </td>
-                <td style="width: 100%; text-align: right; padding-right: 30px">
-                    <img src='assets/img/logo_sanjose_white.png' height='70px' />&nbsp; &nbsp;<img src='assets/img/logo_county.png' height='80px' />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <!--END Map button-->
-</footer>
+
+                </div>
+                <!-- Radio buttons -->
+                <div class=addressContainer>
+                    <input type="radio" id="label1Mile" name="gender" value="1609" onchange="onChangeOfRadio()"><!--value is in meters-->
+                    <label for="label1Mile" class="labelMiles">1 Mile&nbsp;</label>
+                    <input type="radio" id="label2Miles" name="gender" value="3218" onchange="onChangeOfRadio()" checked>
+                    <label for="label2Miles" class="labelMiles">2 Miles&nbsp;</label>
+                    <input type="radio" id="label5Miles" name="gender" value="8046" onchange="onChangeOfRadio()">
+                    <label for="label5Miles" class="labelMiles">5 Miles&nbsp;</label>
+                    <input type="radio" id="label10Miles" name="gender" value="16093" onchange="onChangeOfRadio()">
+                    <label for="label10Miles" class="labelMiles">10 Miles&nbsp;</label>
+                </div>
+
+                <div id="addressSearchSuggest"></div>
+                <!--END Address Box-->
+
+                <!--Main content. ID accordionMain innerHTML will get replaced by HTML from javascript-->
+                <div id="accordionMain" style="padding: 30px;">
+                    <div id="lookup-cta" style=" color: black">
+                        <p style="font-size: +1em"><strong>Look up the following near you:</strong></p>
+                        <ul style="padding: 10px;">
+                            <li><img alt="Senior Meal programs" src="assets/img/icon_senior.png" /> <strong>Senior meal programs</strong> for seniors 60 yrs & older </li>
+                            <li><img alt="School meal programs" src="assets/img/icon_school.png" /> <strong>School meal programs</strong> for youth 18 yrs & younger </li>
+                            <li><img alt="Community meal programs" src="assets/img/icon_community.png" /> <strong>Community meal programs</strong> serving all ages</li>
+                            <li><img alt="Grocery programs" src="assets/img/icon_grocery.png" /> <strong>Grocery programs</strong> for low-income residents</li>
+                        </ul>
+                    </div>
+                    <ul class="cd-accordion cd-accordion--animated margin-top-lg margin-bottom-lg">
+                    </ul>
+                </div>
+                <!--END Main content-->
+
+            </section>
+        </div>
+
+        <footer class="footer" style="position: absolute; bottom: 0; height: 200px;">
+            <!--Map button, just using the address style classes again-->
+            <table style="padding-top: 20px; padding-bottom: 20px; display: inline-block; width: 100%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style="margin-bottom: 10px; margin-left: 10px;">
+                                <a href="https://gis.sanjoseca.gov/maps/covid19foodpublic">
+                                    <div class="footer-highlight" id="mapLinkContainer" style="padding: 10px; width:240px; display:inline-block">
+                                        <img style="vertical-align:middle; display:inline; border: 0" src="assets/img/icon_map.png" height="30px" />
+                                        <span id="mapLinkTitle">Map View</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div style="margin-left: 10px">
+                                <a href="#">
+                                    <div class="footer-highlight" id="mapLinkContainer" style="padding: 10px; width:240px; display:inline-block">
+                                        <img style="vertical-align:middle; display:inline; border: 0" src="assets/img/icon_map.png" height="30px" />
+                                        <span id="mapLinkTitle">Download Food Program PDF</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </td>
+                        <td style="width: 100%; text-align: right; padding-right: 20px">
+                            <img src='assets/img/logo_sanjose_white.png' height='70px' />&nbsp; &nbsp;<img src='assets/img/logo_county.png' height='80px' />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--END Map button-->
+        </footer>
+</div>
 <script src="assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
 <script src="assets/js/main.js"></script>
 <script src="assets/js/csj_addressgeocodercounty.js"></script><!-- functions that operate the ArcGIS Server geocoder -->
