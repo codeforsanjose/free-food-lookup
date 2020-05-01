@@ -183,17 +183,29 @@
 
 				</div>
 				<!-- Radio buttons -->
-				<div class=addressContainer>
-					<input type="radio" id="label1Mile" name="gender" value="1609" onchange="onChangeOfRadio()">
-					<!--value is in meters-->
-					<label for="label1Mile" class="labelMiles">1 Mile&nbsp;</label>
-					<input type="radio" id="label2Miles" name="gender" value="3218" onchange="onChangeOfRadio()"
-						checked>
-					<label for="label2Miles" class="labelMiles">2 Miles&nbsp;</label>
-					<input type="radio" id="label5Miles" name="gender" value="8046" onchange="onChangeOfRadio()">
-					<label for="label5Miles" class="labelMiles">5 Miles&nbsp;</label>
-					<input type="radio" id="label10Miles" name="gender" value="16093" onchange="onChangeOfRadio()">
-					<label for="label10Miles" class="labelMiles">10 Miles&nbsp;</label>
+				<div class=addressContainer style="padding-top:40px;">
+                    <div class="distance-row" style="display:inline-block;padding-bottom:10px;">
+                        <div class="distance-option-container" style="padding-right:10px;width:min-content;display:inline;">
+                            <input type="radio" id="label1Mile" name="gender" value="1609" onchange="onChangeOfRadio()">
+                            <!--value is in meters-->
+                            <label for="label1Mile" class="labelMiles">Walking&nbsp;(1&nbsp;Mile)&nbsp;</label>
+                        </div>
+                        <div class="distance-option-container" style="padding-right:10px;width:min-content;display:inline;">
+                            <input type="radio" id="label2Miles" name="gender" value="3218" onchange="onChangeOfRadio()"
+                                   checked>
+                            <label for="label2Miles" class="labelMiles">Biking&nbsp;(2&nbsp;Miles)&nbsp;</label>
+                        </div>
+                    </div>
+                    <div class="distance-row" style="display:inline-block;padding-bottom:10px;">
+                        <div class="distance-option-container" style="padding-right:10px;width:min-content;display:inline;">
+                            <input type="radio" id="label5Miles" name="gender" value="8046" onchange="onChangeOfRadio()">
+                            <label for="label5Miles" class="labelMiles">Driving&nbsp;(5&nbsp;Miles)&nbsp;</label>
+                        </div>
+                        <div class="distance-option-container" style="padding-right:10px;width:min-content;display:inline;">
+                            <input type="radio" id="label10Miles" name="gender" value="16093" onchange="onChangeOfRadio()">
+                            <label for="label10Miles" class="labelMiles">Driving&nbsp;(10&nbsp;Miles)&nbsp;</label>
+                        </div>
+                    </div>
 				</div>
 
 				<div id="addressSearchSuggest"></div>
