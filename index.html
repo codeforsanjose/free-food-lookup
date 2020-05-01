@@ -91,19 +91,20 @@
   <div id="addressSearchSuggest"></div>
   <!--END Address Box-->
 
-  <div id="lookup-cta" style="padding: 30px;">
-      <p style="font-size: +1em"><strong>Look up the following near you:</strong></p>
-      <ul style="padding: 10px;">
-          <li><img alt="Senior Meal programs" src="assets/img/icon_senior.png" /> <strong>Senior meal programs</strong> for seniors 60 yrs & older </li>
-          <li><img alt="School meal programs" src="assets/img/icon_school.png" /> <strong>School meal programs</strong> for youth 18 yrs & younger </li>
-          <li><img alt="Community meal programs" src="assets/img/icon_community.png" /> <strong>Community meal programs</strong> serving all ages</li>
-          <li><img alt="Grocery programs" src="assets/img/icon_grocery.png" /> <strong>Grocery programs</strong> for low-income residents</li>
+  <!--Main content. ID accordionMain innerHTML will get replaced by HTML from javascript-->
+  <div id="accordionMain" style="padding: 30px;">
+      <div id="lookup-cta" style=" color: black">
+          <p style="font-size: +1em"><strong>Look up the following near you:</strong></p>
+          <ul style="padding: 10px;">
+              <li><img alt="Senior Meal programs" src="assets/img/icon_senior.png" /> <strong>Senior meal programs</strong> for seniors 60 yrs & older </li>
+              <li><img alt="School meal programs" src="assets/img/icon_school.png" /> <strong>School meal programs</strong> for youth 18 yrs & younger </li>
+              <li><img alt="Community meal programs" src="assets/img/icon_community.png" /> <strong>Community meal programs</strong> serving all ages</li>
+              <li><img alt="Grocery programs" src="assets/img/icon_grocery.png" /> <strong>Grocery programs</strong> for low-income residents</li>
+          </ul>
+      </div>
+      <ul class="cd-accordion cd-accordion--animated margin-top-lg margin-bottom-lg">
       </ul>
   </div>
-
-  <!--Main content. ID accordionMain innerHTML will get replaced by HTML from javascript-->
-	<ul class="cd-accordion cd-accordion--animated margin-top-lg margin-bottom-lg" id="accordionMain">
-  </ul>
   <!--END Main content-->
 	
 </section>
@@ -131,7 +132,7 @@
                         </a>
                     </div>
                 </td>
-                <td style="width: 100%; text-align: center">
+                <td style="width: 100%; text-align: right; padding-right: 30px">
                     <img src='assets/img/logo_sanjose_white.png' height='70px' />&nbsp; &nbsp;<img src='assets/img/logo_county.png' height='80px' />
                 </td>
             </tr>
