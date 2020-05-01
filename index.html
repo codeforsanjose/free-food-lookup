@@ -233,21 +233,19 @@
 		<div style="padding-bottom: 200px">
 			<section class="container max-width-sm" style="padding-top: 5em">
 
-				<div class="text-component text-center" id="addressContainer">
+				<div class="text-component" id="addressContainer">
 					<!--<p><a href="https://codyhouse.co/gem/css-multi-level-accordion-menu" class="cd-article-link">Article & Download</a></p>-->
 					<h1>Find free food near me</h1>
 					<h1 class="translated">Encuentra comida gratis cerca de mí</h1>
 					<h1 class="translated">Tìm đồ ăn miễn phí gần tôi</h1>
 
 					<!--START Address Box-->
-					<div class="text-component text-center">
-						<div></div>
-						<h2 id="addressSearchTitle">Enter your address:</h2>
-					</div>
-
 					<div>
-						<input id="addressSearch" type="text" oninput="getSearchSuggestions(this.value)"
-							onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}" />
+						<label style="font-style: normal; font-weight: 600; font-size: 22px; line-height: 30px;">
+							Enter your address:
+							<input id="addressSearch" type="text" oninput="getSearchSuggestions(this.value)"
+								onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}" />
+						</label>
 					</div>
 
 				</div>
