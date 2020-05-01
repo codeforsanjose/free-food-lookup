@@ -2452,6 +2452,10 @@ box-shadow:var(--shadow-lg)}
 transition:-webkit-transform .3s;
 transition:transform .3s;
 transition:transform .3s, -webkit-transform .3s}
+.cd-accordion--animated .cd-accordion__label_teal::before{
+    transition:-webkit-transform .3s;
+    transition:transform .3s;
+    transition:transform .3s, -webkit-transform .3s}
 .cd-accordion__sub{
 display:none;
 overflow:hidden}
@@ -2481,12 +2485,34 @@ box-shadow:inset 0 -1px lightness(hsl(218, 7%, 32%), 1.2);
 box-shadow:inset 0 -1px var(--color-shadow);
 color:hsl(0, 0%, 100%);
 color:var(--color-white)}
+.cd-accordion__label_teal{
+    position:relative;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-align:center;
+    align-items:center;
+    padding:0.75em 1.25em;
+    padding:var(--space-sm) var(--space-md);
+    background:hsl(218, 7%, 32%);
+    background:var(--cd-color-1);
+    --color-shadow: lightness(hsl(218, 7%, 32%), 1.2);
+    --color-shadow: lightness(var(--cd-color-1), 1.2);
+    box-shadow:inset 0 -1px lightness(hsl(218, 7%, 32%), 1.2);
+    box-shadow:inset 0 -1px var(--color-shadow);
+    color:hsl(0, 0%, 100%);
+    color:var(--color-white)}
 .cd-accordion__label span{
 -ms-flex-order:3;
 order:3}
+.cd-accordion__label_teal span{
+    -ms-flex-order:3;
+    order:3}
 .cd-accordion__label:hover{
 background:hsl(218, 7%, 35.2%);
 background:hsl(var(--cd-color-1-h), var(--cd-color-1-s), calc(var(--cd-color-1-l)*1.1))}
+.cd-accordion__label_teal:hover{
+    background:hsl(218, 7%, 35.2%);
+    background:hsl(var(--cd-color-1-h), var(--cd-color-1-s), calc(var(--cd-color-1-l)*1.1))}
 .cd-accordion__label::after,.cd-accordion__label--icon-folder::before{
 content:'';
 display:block;
@@ -2496,27 +2522,57 @@ background-image:url("../img/cd-icons.png");
 background-repeat:no-repeat;
 margin-right:0.25em;
 margin-right:var(--space-xxxs)}
+.cd-accordion__label_teal::after,.cd-accordion__label_teal--icon-folder::before{
+    content:'';
+    display:block;
+    width:16px;
+    height:16px;
+    background-image:url("../img/downArrowTeal.png");
+    background-repeat:no-repeat;
+    margin-right:0.25em;
+    margin-right:var(--space-xxxs)}
 .cd-accordion__label--icon-folder::before{
 -ms-flex-order:1;
 order:1}
+.cd-accordion__label_teal--icon-folder::before{
+    -ms-flex-order:1;
+    order:1}
 .cd-accordion__label::after{
 -ms-flex-order:2;
 order:2}
+.cd-accordion__label_teal::after{
+    -ms-flex-order:2;
+    order:2}
 .cd-accordion__label--icon-folder::before{
 background-position:0 0;
 -webkit-transform:rotate(-90deg);
 -ms-transform:rotate(-90deg);
 transform:rotate(-90deg)}
+.cd-accordion__label_teal--icon-folder::before{
+    background-position:0 0;
+    -webkit-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    transform:rotate(-90deg)}
 .cd-accordion__label--icon-folder::after{
 background-position:-16px 0}
+.cd-accordion__label_teal--icon-folder::after{
+    background-position:-16px 0}
 .cd-accordion__label--icon-img::after{
 background-position:-48px 0}
+.cd-accordion__label_teal--icon-img::after{
+    background-position:-48px 0}
 .cd-accordion__input:checked+.cd-accordion__label::before{
 -webkit-transform:rotate(0);
 -ms-transform:rotate(0);
 transform:rotate(0)}
+.cd-accordion__input:checked+.cd-accordion__label_teal::before{
+    -webkit-transform:rotate(0);
+    -ms-transform:rotate(0);
+    transform:rotate(0)}
 .cd-accordion__input:checked+.cd-accordion__label::after{
 background-position:-32px 0}
+.cd-accordion__input:checked+.cd-accordion__label_teal::after{
+    background-position:-32px 0}
 .cd-accordion__input:checked ~ .cd-accordion__sub{
 display:block}
 .cd-accordion__sub--l1 .cd-accordion__label{
@@ -2528,15 +2584,33 @@ box-shadow:inset 0 -1px lightness(hsl(218, 7%, 32%), 0.85);
 box-shadow:inset 0 -1px var(--color-shadow);
 padding-left:calc(1.25em + 16px);
 padding-left:calc(var(--space-md) + 16px)}
+.cd-accordion__sub--l1 .cd-accordion__label_teal{
+    background:hsl(218, 7%, 20.8%);
+    background:hsl(var(--cd-color-1-h), var(--cd-color-1-s), calc(var(--cd-color-1-l)*0.65));
+    --color-shadow: lightness(hsl(218, 7%, 32%), 0.85);
+    --color-shadow: lightness(var(--cd-color-1), 0.85);
+    box-shadow:inset 0 -1px lightness(hsl(218, 7%, 32%), 0.85);
+    box-shadow:inset 0 -1px var(--color-shadow);
+    padding-left:calc(1.25em + 16px);
+    padding-left:calc(var(--space-md) + 16px)}
 .cd-accordion__sub--l1 .cd-accordion__label:hover{
 background:hsl(218, 7%, 24%);
+.cd-accordion__sub--l1 .cd-accordion__label_teal:hover{
+    background:hsl(218, 7%, 24%);
 background:hsl(var(--cd-color-1-h), var(--cd-color-1-s), calc(var(--cd-color-1-l)*0.75))}
 .cd-accordion__item:last-child .cd-accordion__label{
 box-shadow:none}
+.cd-accordion__item:last-child .cd-accordion__label_teal{
+    box-shadow:none}
 .cd-accordion__sub--l2 .cd-accordion__label{
 padding-left:calc(1.5em + 32px);
 padding-left:calc(var(--space-md) + var(--space-xxxs) + 32px)}
+.cd-accordion__sub--l2 .cd-accordion__label_teal{
+    padding-left:calc(1.5em + 32px);
+    padding-left:calc(var(--space-md) + var(--space-xxxs) + 32px)}
 .cd-accordion__sub--l3 .cd-accordion__label{
 padding-left:calc(1.5em + 48px);
 padding-left:calc(var(--space-md) + var(--space-xxxs) + 48px)}
-
+.cd-accordion__sub--l3 .cd-accordion__label_teal{
+    padding-left:calc(1.5em + 48px);
+    padding-left:calc(var(--space-md) + var(--space-xxxs) + 48px)}
