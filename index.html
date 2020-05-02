@@ -1,580 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="Description" content="A lookup tool for Santa Clara County residents to find programs like free school meals and groceries near them.">
-	<script>
-		document.getElementsByTagName("html")[0].className += " js";
-	</script>
-	<link rel="stylesheet" href="assets/css/style.css">
-	<title>Santa Clara County Food Options</title>
-	<style>
-		/* CSJ created styles. These styles override the styles that came with the app code. */
-		body {
-			background-color: #F2F2F2;
-			color: #000000;
-			height: 100%;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Clara County Food Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="./assets/js/csj_addressgeocodercounty.js" async></script>
+    <script src="./assets/js/csj_generalutilityfunctions.js" async></script>
+    <script src="./assets/js/setAccordion.js" async></script>
+    <script>
+        //jQuery functions for accordion menu
+        $(document).ready(function () {
+            $(document).on("click", "div.topLvlLabel", function () {
+                $(this).children(".menu-arrow").toggleClass("open")
+                $(this).siblings(".topLvlResults").slideToggle()
 
-		.footer-container {
-			display: flex;
-		}
-		
-		.column {
-			width: 50%;
-		}
+                //This code is to close any sub menus that are open if a top level menu gets closed, but it doesn't work currently.
+                if ($(this).siblings(".topLvlResults").children(".location-row").children(
+                        ".menu-arrow")
+                    .hasClass("open")) {
+                    console.log("testing toggle")
+                    $(this).siblings(".topLvlResults").children(".location-details").slideToggle()
+                }
 
-		@media only screen and (max-width: 768px) {
-			.column {
-				width: 100%;
-			}
-		}
-		
-		.translated {
-			font-size: 20px;
-			font-weight: 300;
-			color: #333;
-			text-decoration: none;
-		}
 
-		#addressSearchTitle {
-			font-size: 20px;
-			font-weight: 700;
-			z-index: 100;
-			position: relative;
-			top: px;
-			margin-left: auto;
-			margin-right: auto;
-			left: 0;
-			right: 0;
-		}
-
-		.addressContainer {
-			float: block;
-			margin-top: 5px;
-		}
-
-		#addressSearch {
-			float: left;
-			margin-top: 5px;
-			border-radius: 4px;
-			z-index: 99;
-			height: 44px;
-			padding: 10px;
-			width: 100%;
-			border: solid 1px black;
-		}
-
-		#addressSearchSuggest {
-			border-radius: 4px;
-			position: absolute;
-			visibility: hidden;
-			padding: 10px;
-			z-index: 98;
-			float: left;
-			width: 50%;
-			border: solid 1px black;
-			background-color: white;
-		}
-
-		.selectSuggestion {
-			width: 100%;
-			height: 24px;
-			color: #575757;
-		}
-
-		.selectSuggestion:hover {
-			background-color: #CCCCCC;
-			cursor: pointer;
-		}
-
-		#addressSearchSuggest p {
-			position: absolute;
-			bottom: 0;
-			left: 5px;
-			font-size: 11px;
-			color: #808080;
-		}
-
-		#addressSearchSuggest td {
-			font-size: 11px;
-			color: #808080;
-		}
-
-		#addressContainer {
-			border: solid 0px black;
-			padding-top: 4px;
-			padding-bottom: 20px;
-		}
-
-		h1 {
-			font-size: 36px;
-			font-weight: bold;
-			text-align: left;
-			text-decoration: underline;
-			text-decoration-color: #E5BF24;
-		}
-
-		#addressContainer h2 {
-			margin-top: 2em;
-			text-align: left;
-		}
-
-		/* #mapLinkTitle {font-size:26px; padding-left:24px; color:white;} 
-		#mapLinkContainer {border:solid 0px black; background-color:rgb(72,194,249); padding-top:20px; padding-bottom:20px; cursor:pointer;} */
-
-		.labelMiles {
-			font-size: 14px;
-		}
-
-		.textLine {
-			line-height: 90%;
-			padding: 1px;
-			margin: 1px;
-			border: 0;
-		}
-
-		.textTitle {
-			color: #A0CABB;
-		}
-
-		.textNone {
-			color: #F2B3A6
-		}
-
-		.textHeading {
-			width: 80%;
-			line-height: 90%;
-			color: #f5f5f5;
-		}
-
-		.textDistance {
-			color: #a5b6d4
-		}
-
-		.textSpan {
-			width: 80%;
-		}
-
-		.imgInline {
-			padding-right: 8px;
-		}
-
-		#accordionMain {
-			color: white
-		}
-
-		li {
-			list-style-type: none;
-		}
-
-		.blk_icon {
-			width: 50px;
-			margin-bottom: -20px;
-		}
-
-		.whte_icon {
-			width: 50px;
-		}
-
-		.meals_li {
-			margin: 10px 0px;
-		}
-
-		#plate_wtrmrk {
-			opacity: 0.5;
-			position: absolute;
-			top: 0;
-			right: 10%;
-		}
-
-		#grocery_wtrmrk {
-			opacity: 0.5;
-			position: absolute;
-			top: 400px;
-			right: 10%;
-			width: 275px;
-		}
-
-		@media screen and (max-width: 600px) {
-			#grocery_wtrmrk {
-				display: none;
-			}
-
-			#plate_wtrmrk {
-				position: static;
-				width: 200px;
-				margin: 0 auto;
-				display: block;
-				margin-bottom: -80px;
-			}
-
-			h1 {
-				font-size: 30px;
-			}
-
-			.meals_li_p {
-				width: 80%;
-			}
-
-			.blk_icon {
-				width: 50px;
-				margin-bottom: -5px;
-			}
-		}
-	</style>
+            });
+            $(document).on("click", "div.location-row", function () {
+                $(this).children(".menu-arrow").toggleClass("open")
+                $(this).next().slideToggle()
+            });
+        });
+    </script>
 </head>
 
 <body>
-	<div id="container" style="min-height: 100%; width: 100%; position: relative">
-		<img id="plate_wtrmrk" src="./assets/img/plate_watermark.png" alt="plate with utensils">
-		<img id="grocery_wtrmrk" src="./assets/img/grocery_watermark.png" alt="bag of groceries">
-		<div style="padding-bottom: 200px">
-			<section class="container max-width-sm" style="padding-top: 5em">
 
-				<div class="text-component" id="addressContainer">
-					<!--<p><a href="https://codyhouse.co/gem/css-multi-level-accordion-menu" class="cd-article-link">Article & Download</a></p>-->
-					<h1>Find free food near me</h1>
-					<h1 class="translated">Encuentra comida gratis cerca de mí</h1>
-					<h1 class="translated">Tìm đồ ăn miễn phí gần tôi</h1>
-
-					<!--START Address Box-->
-					<div style="padding-top: 30px;">
-						<label style="font-style: normal; font-weight: 600; font-size: 22px; line-height: 30px;">
-							Enter your address:
-							<input id="addressSearch" type="text" oninput="getSearchSuggestions(this.value)"
-								onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}" />
-						</label>
-					</div>
-
-				</div>
-				<!-- Radio buttons -->
-				<div class=addressContainer style="padding-top:40px;">
-					<div class="distance-row" style="display:inline-block;padding-bottom:10px;">
-						<div class="distance-option-container"
-							style="padding-right:10px;width:min-content;display:inline;">
-							<input type="radio" id="label1Mile" name="gender" value="1609" onchange="onChangeOfRadio()">
-							<!--value is in meters-->
-							<label for="label1Mile" class="labelMiles">Walking&nbsp;(1&nbsp;Mile)&nbsp;</label>
-						</div>
-						<div class="distance-option-container"
-							style="padding-right:10px;width:min-content;display:inline;">
-							<input type="radio" id="label2Miles" name="gender" value="3218" onchange="onChangeOfRadio()"
-								checked>
-							<label for="label2Miles" class="labelMiles">Biking&nbsp;(2&nbsp;Miles)&nbsp;</label>
-						</div>
-					</div>
-					<div class="distance-row" style="display:inline-block;padding-bottom:10px;">
-						<div class="distance-option-container"
-							style="padding-right:10px;width:min-content;display:inline;">
-							<input type="radio" id="label5Miles" name="gender" value="8046"
-								onchange="onChangeOfRadio()">
-							<label for="label5Miles" class="labelMiles">Driving&nbsp;(5&nbsp;Miles)&nbsp;</label>
-						</div>
-						<div class="distance-option-container"
-							style="padding-right:10px;width:min-content;display:inline;">
-							<input type="radio" id="label10Miles" name="gender" value="16093"
-								onchange="onChangeOfRadio()">
-							<label for="label10Miles" class="labelMiles">Driving&nbsp;(10&nbsp;Miles)&nbsp;</label>
-						</div>
-					</div>
-				</div>
-
-				<div id="addressSearchSuggest"></div>
-				<!--END Address Box-->
-
-				<!--Main content. ID accordionMain innerHTML will get replaced by HTML from javascript-->
-				<div id="accordionMain" style="padding: 30px 0px;">
-					<div id="lookup-cta" style=" color: black">
-						<p style="font-size: +1em"><strong>Look up the following near you:</strong></p>
-						<ul style="padding: 10px;">
-							<li class="meals_li"><img alt="Senior Meal programs" class="blk_icon"
-									src="assets/img/icon_senior_black.png" />
-								<p class="meals_li_p" style="display:inline-block"><strong>Senior
-										meal
-										programs</strong> for seniors 60 yrs & older </p>
-							</li>
-							<li class="meals_li"><img alt="School meal programs" class="blk_icon"
-									src="assets/img/icon_school_black.png" />
-								<p class="meals_li_p" style="display:inline-block"><strong>School
-										meal
-										programs</strong> for youth 18 yrs & younger </p>
-							</li>
-							<li class="meals_li"><img alt="Community meal programs" class="blk_icon"
-									src="assets/img/icon_community_black.png" />
-								<p class="meals_li_p" style="display:inline-block"><strong>Community meal
-										programs</strong> serving all
-									ages</p>
-							</li>
-							<li class="meals_li"><img alt="Grocery programs" class="blk_icon"
-									src="assets/img/icon_grocery_black.png" />
-								<p class="meals_li_p" style="display:inline-block"><strong>Grocery
-										programs</strong> for low-income residents</p>
-							</li>
-						</ul>
-					</div>
-					<ul class="cd-accordion cd-accordion--animated margin-top-lg margin-bottom-lg">
-					</ul>
-				</div>
-				<!--END Main content-->
-
-			</section>
-		</div>
-
-		<footer class="footer" style="background-color: #07414c; position: fixed; left: 0; bottom: 0; width: 100%; height: 200px; padding: 30px;">
-			<!--Map button, just using the address style classes again-->
-				<div class="footer-container">
-						<div class="column">
-							<div style="margin-bottom: 10px; margin-left: 10px;">
-								<a href="https://gis.sanjoseca.gov/maps/covid19foodpublic">
-									<div class="footer-highlight" style="color: #ffffff; border-radius: 5px; padding: 10px; width:250px;">
-										<img style="vertical-align:middle; display:inline; border: 0"
-											alt="icon map marker white" src="assets/img/icon-map-marker-white.png" height="30px" />
-										<span style="padding: 5px;">Map View</span>
-									</div>
-								</a>
-							</div>
-							<div style="margin-left: 10px">
-								<a href="#">
-									<div class="footer-highlight" style="color: #ffffff; border-radius: 5px; padding: 10px; width:250px;">
-										<img style="vertical-align:middle; display:inline; border: 0"
-											alt="icon download white" src="assets/img/icon-download-white.png" height="30px" />
-										<span style="padding: 5px;">Download Food Program PDF</span>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="column" style="width: 100%; text-align: right; padding-right: 20px">
-							<img style="padding: 10px;" alt="logo City of San Jose white" src='assets/img/logo_sanjose_white.png'/ height='100px'>
-							<img style="padding: 10px;" alt="logo Santa Clara County white" src='assets/img/logo-county-white.png' height='100px'/>
-						</div>
-			</div>
-			<!--END Map button-->
-		</footer>
-	</div>
-	<script src="assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/csj_addressgeocodercounty.js"></script>
-	<!-- functions that operate the ArcGIS Server geocoder -->
-	<script src="assets/js/csj_generalutilityfunctions.js"></script>
-	<!-- general function library called by the custom code below -->
-	<script>
-		//CSJ Custom Code (ask Joel)
-		////Define main structure of accordion
-		function loadAccordionMain() { //main accordion HTML frame that will be injected after user types address. Each span with an ID in this will have further innerHTML injected into it after API callout resolves.
-			document.getElementById("accordionMain").innerHTML = '\
-	<li class="cd-accordion__item cd-accordion__item--has-children">\
-		  <input class="cd-accordion__input" type="checkbox" name ="group-1" id="group-1">\
-		  \
-		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-1"><img class="whte_icon" src="assets/img/icon_senior_white.png" class="imgInline" /><span id="labelSeniors">Group 1</span></label>\
-		  <ul class="cd-accordion__sub cd-accordion__sub--l1" id="dataSeniors">\
-		  \
-		  \
-		  </ul>\
-		</li>\
-		\
-		<li class="cd-accordion__item cd-accordion__item--has-children">\
-		  <input class="cd-accordion__input" type="checkbox" name ="group-2" id="group-2">\
-		  \
-		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-2"><img class="whte_icon" src="assets/img/icon_school_white.png" class="imgInline" /><span id="labelSchools">Group 2</span></label>\
-		  <ul class="cd-accordion__sub cd-accordion__sub--l1"  id="dataSchools">\
-		  \
-		  \
-		  </ul>\
-		</li>\
-		\
-		<li class="cd-accordion__item cd-accordion__item--has-children">\
-		  <input class="cd-accordion__input" type="checkbox" name ="group-3" id="group-3">\
-		  \
-		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-3"><img class="whte_icon" src="assets/img/icon_community_white.png" class="imgInline" /><span id="labelCommunity">Group 3</span></label>\
-		  <ul class="cd-accordion__sub cd-accordion__sub--l1"  id="dataCommunity">\
-		  \
-		  \
-		  </ul>\
-		</li>\
-		\
-		<li class="cd-accordion__item cd-accordion__item--has-children">\
-		  <input class="cd-accordion__input" type="checkbox" name ="group-4" id="group-4">\
-		  \
-		  <label class="cd-accordion__label cd-accordion__label--icon-folder" for="group-4"><img class="whte_icon" src="assets/img/icon_grocery_white.png" class="imgInline" /><span id="labelFoodBanks">Group 4</span></label>\
-		  <ul class="cd-accordion__sub cd-accordion__sub--l1" id="dataFoodBanks">\
-		  \
-		  \
-		  </ul>\
-	</li>'
-		}
-
-
-		function doSomethingWithSelectedAddress(foundLat, foundLng, foundAddress) {
-			//Put the actions to do with found address here
-			callApiAndBuildJson(foundLat, foundLng, foundAddress);
-		}
-
-
-		////GET FROM ARCGIS SERVER REST ENDPOINTS////
-		function callApiAndBuildJson(foundLat, foundLng, userAddress) {
-
-			loadAccordionMain(); //load framework to main
-
-			var withinMeters = getWithinMetersFromRadio();
-
-			//SENIORS
-			var request = new XMLHttpRequest()
-			var whereStatement = "SITESTATUS <> 'Closed'";
-			request.open('GET',
-				'https://geo.sanjoseca.gov/server/rest/services/EOC/EOC_COVID19_SantaClaraCountyFoodAccess/MapServer/1/query?where=' +
-				whereStatement + '&objectIds=&time=&geometry=' + foundLng + '%2C' + foundLat +
-				'&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&resultType=none&distance=' +
-				withinMeters +
-				'&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=',
-				true)
-			request.onload = function () {
-				// Begin accessing JSON data here
-				var data = JSON.parse(this.response)
-				populateAccordion(data, userAddress, foundLat, foundLng, "labelSeniors", "dataSeniors",
-					"Free Senior Meals");
-			}
-			// Send request
-			request.send()
-
-			//SCHOOLS
-			var request = new XMLHttpRequest()
-			var whereStatement = "SITESTATUS <> 'Closed'";
-			request.open('GET',
-				'https://geo.sanjoseca.gov/server/rest/services/EOC/EOC_COVID19_SantaClaraCountyFoodAccess/MapServer/2/query?where=' +
-				whereStatement + '&objectIds=&time=&geometry=' + foundLng + '%2C' + foundLat +
-				'&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&resultType=none&distance=' +
-				withinMeters +
-				'&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=',
-				true)
-			request.onload = function () {
-				// Begin accessing JSON data here
-				var data = JSON.parse(this.response)
-				populateAccordion(data, userAddress, foundLat, foundLng, "labelSchools", "dataSchools",
-					"Free School Meals");
-			}
-			// Send request
-			request.send()
-
-			//COMMUNITY
-			var request = new XMLHttpRequest()
-			var whereStatement = "SITESTATUS <> 'Closed'";
-			request.open('GET',
-				'https://geo.sanjoseca.gov/server/rest/services/EOC/EOC_COVID19_SantaClaraCountyFoodAccess/MapServer/6/query?where=' +
-				whereStatement + '&objectIds=&time=&geometry=' + foundLng + '%2C' + foundLat +
-				'&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&resultType=none&distance=' +
-				withinMeters +
-				'&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=',
-				true)
-			request.onload = function () {
-				// Begin accessing JSON data here
-				var data = JSON.parse(this.response)
-				populateAccordion(data, userAddress, foundLat, foundLng, "labelCommunity", "dataCommunity",
-					"Free Community Meals");
-			}
-			// Send request
-			request.send()
-
-			//FOODBANKS
-			var request = new XMLHttpRequest()
-			var whereStatement = "SITESTATUS <> 'Closed'";
-			request.open('GET',
-				'https://geo.sanjoseca.gov/server/rest/services/EOC/EOC_COVID19_SantaClaraCountyFoodAccess/MapServer/3/query?where=' +
-				whereStatement + '&objectIds=&time=&geometry=' + foundLng + '%2C' + foundLat +
-				'&geometryType=esriGeometryPoint&inSR=4326&spatialRel=esriSpatialRelIntersects&resultType=none&distance=' +
-				withinMeters +
-				'&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=4326&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnDistinctValues=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=',
-				true)
-			request.onload = function () {
-				// Begin accessing JSON data here
-				var data = JSON.parse(this.response)
-				populateAccordion(data, userAddress, foundLat, foundLng, "labelFoodBanks", "dataFoodBanks",
-					"Free Grocery Programs");
-			}
-			// Send request
-			request.send()
-		}
-
-
-		function populateAccordion(data, userAddress, foundLat, foundLng, labelType, dataType, nameType) {
-			//distance, sort, slice
-			data = calculateDistanceSortSlice(data, foundLat, foundLng);
-
-			var injectionHtml = "";
-			if (data.length == 0) {
-				var injectionHeadingHtml = nameType + " <span class='textNone' style='color:white;'>(None Nearby)</span>";
-			} else {
-				for (i = 0; i < data.length; i++) { //Fills out each accordion span with innerHTML and injects it.
-					injectionHtml += '\
-				<li class="cd-accordion__item cd-accordion__item--has-children">\
-				  <input class="cd-accordion__input" type="checkbox" name ="sub-group-' + dataType + i + '" id="sub-group-' +
-						dataType + i + '">\
-				  <label class="cd-accordion__label_teal cd-accordion__label_teal--icon-folder" for="sub-group-' + dataType + i +
-						'" style="background:#F6F6F6;border-bottom:1px solid #04586E;">' +
-						'<span class="textHeading" style="color:#04586E;">' + data[i].SiteName + ' ' +
-						'<span class="textDistance" style="color:#04586E;">' +
-						'(' + data[i].Distance +
-						' miles)\
-                        </span>\
-                    </span>\
-                  </label>\
-				  \
-				  <ul class="cd-accordion__sub cd-accordion__sub--l2">\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Site Name:</b> ' +
-						data[i].SiteName +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Site Address:</b> ' +
-						data[i].SiteAddress +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Directions:</b> <a href="https://www.google.com/maps/dir/' +
-						userAddress + '/' + data[i].SiteAddress +
-						'" target="_blank">Google Maps</a></span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Open Days:</b> ' +
-						data[i].OpenDays +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Open Times:</b> ' +
-						data[i].OpenTimes +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Open Dates:</b> ' +
-						data[i].OpenDates +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Site Type:</b> ' +
-						data[i].SiteType +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Phone Number:</b> ' +
-						data[i].PhoneNumber +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Web Link:</b> ' +
-						checkWebLink(data[i].WebLink) +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Last Updated:</b> ' +
-						data[i].LastUpdated +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Description:</b> ' +
-						data[i].Description +
-						'</span></li>\
-					<li class="cd-accordion__item cd-accordion__label_teal cd-accordion__label_teal--icon-img textLine" style="margin:0;background:white;padding-bottom:10px;padding-top:10px;padding-left:calc(var(--space-md) - 7px);border-bottom:1px solid #04586E;"><span class="textSpan" style="color:black;display:flex;line-height:25px;"><b class="textTitle" style="color:#04586E;min-width:200px;">Description Long:</b> ' +
-						data[i].DescriptionLong + '</span></li>\
- </ul>\ </li>';
-				}
-				var injectionHeadingHtml = nameType + " (" + data.length + ")";
-			}
-			document.getElementById(labelType).innerHTML = injectionHeadingHtml;
-			document.getElementById(dataType).innerHTML = injectionHtml;
-		}
-
-
-		function checkWebLink(link) {
-			if (link.length > 10) { //I assume a length will be pretty long, and N/A, None, or "" is shorter than 10.
-				var newLink = '<a href="' + link + '" target="_blank">Website</a>';
-			} else {
-				var newLink = "None";
-			}
-			return newLink;
-		}
-	</script>
+    <main>
+        <div class="container">
+            <img id="plate_wtrmrk" src="./assets/img/watermarks/plate_watermark.png" alt="plate with utensils">
+            <img id="grocery_wtrmrk" src="./assets/img/watermarks/grocery_watermark.png" alt="bag of groceries">
+            <h1>Find free food near me</h1>
+            <p id="spanish">Encuentra comida gratis cerca de mí</p>
+            <p id="vietnamese">Tìm đồ ăn miễn phí gần tôi</p>
+            <form>
+                <label for="address" id="address-label">Your address:</label>
+                <input type="text" id="addressSearch" oninput="getSearchSuggestions(this.value)"
+                    onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}">
+                <div class="radio-cont">
+                    <input type="radio" id="label1Mile" name="distance" value="1609" onchange="onChangeOfRadio()"
+                        checked>
+                    <label for="label1Mile" class="labelMiles">Walking (1 Mile)</label>
+                </div>
+                <div class="radio-cont">
+                    <input type="radio" id="label2Miles" name="distance" value="3218" onchange="onChangeOfRadio()">
+                    <label for="label2Miles" class="labelMiles">Biking (2 Miles)</label>
+                </div>
+                <div class="radio-cont">
+                    <input type="radio" id="label5Miles" name="distance" value="8046" onchange="onChangeOfRadio()">
+                    <label for="label5Miles" class="labelMiles">Driving (5 Miles)</label>
+                </div>
+                <div class="radio-cont">
+                    <input type="radio" id="label10Miles" name="distance" value="16093" onchange="onChangeOfRadio()">
+                    <label for="label10Miles" class="labelMiles">Driving (10 Miles)</label>
+                </div>
+            </form>
+            <div id="addressSearchSuggest"></div>
+            <div class="accordion" id="accordionMain"></div>
+            <div id="program-info">
+                <h2>Find the following near you:</h2>
+                <img class="info-icon" src="./assets/img/icons/icon_senior_black.png" alt="senior icon">
+                <p><span>Senior meal programs</span> for seniors 60 yrs & older</p>
+                <img class="info-icon" src="./assets/img/icons/icon_school_black.png" alt="student icon">
+                <p><span>School meal programs</span> for youth 18 yrs & younger</p>
+                <img class="info-icon" src="./assets/img/icons/icon_community_black.png" alt="community icon">
+                <p><span>Community meal programs</span> serving all ages</p>
+                <img class="info-icon" src="./assets/img/icons/icon_grocery_black.png" alt="senior icon">
+                <p><span>Free groceries</span> for low-income residents</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div id="foot-btns">
+                <a href="https://gis.sanjoseca.gov/maps/covid19foodpublic" class="foot-btn"><img class="btn-icon"
+                        src="./assets/img/icons/icon_map_pin.png" alt="map pin icon">Map
+                    view</a>
+                <a href="https://www.sanjoseca.gov/home/showdocument?id=56301" class="foot-btn" target="_blank"
+                    rel="noopener noreferrer"><img class="btn-icon" src="./assets/img/icons/icon_dl.png"
+                        alt="download icon">Get PDF (Kids 18-)</a>
+                <a href="https://www.sanjoseca.gov/home/showdocument?id=56299" class="foot-btn" target="_blank"
+                    rel="noopener noreferrer"><img class="btn-icon" src="./assets/img/icons/icon_dl.png"
+                        alt="download icon">Get PDF (Seniors 60+)</a>
+            </div>
+            <div id="foot-logos">
+                <a id="SJ-logo" target="_blank" rel="noopener noreferrer" href="https://www.sanjoseca.gov/home"><img
+                        src="./assets/img/logos/logo_sanjose_white.png" alt="City of San José logo"></a>
+                <a id="SCC-logo" target="_blank" rel="noopener noreferrer"
+                    href="https://www.sccgov.org/sites/scc/Documents/home.html"><img
+                        src="./assets/img/logos/logo_SCC_white.png" alt="County of Santa Clara logo"></a>
+                <a id="CfSJ-logo" target="_blank" rel="noopener noreferrer" href="https://www.codeforsanjose.com/"><img
+                        src="./assets/img/logos/logo-CfSJ-white.png" alt="Code for San José logo"></a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

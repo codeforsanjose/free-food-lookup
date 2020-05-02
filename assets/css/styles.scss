@@ -1,0 +1,530 @@
+//CSS Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+}
+
+//Global settings and phone layout
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f6f6f6;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  position: relative;
+  min-height: 68vh;
+  width: 90%;
+  margin: 0 auto;
+
+  #grocery_wtrmrk {
+    display: none;
+  }
+
+  #plate_wtrmrk {
+    position: static;
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    opacity: 0.5;
+  }
+
+  h1 {
+    font-size: 25px;
+    width: fit-content;
+    border-bottom: 4px solid #e5bf24;
+  }
+
+  #spanish,
+  #vietnamese {
+    font-size: 16px;
+    margin: 5px 0px;
+  }
+  #address-label {
+    font-weight: 700;
+    display: block;
+    margin-top: 10px;
+  }
+  #addressSearch {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    margin: 5px 0px;
+  }
+
+  .radio-cont {
+    width: 49%;
+    display: inline-block;
+  }
+
+  .labelMiles {
+    font-size: 14px;
+  }
+
+  #addressSearchSuggest {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px 0px;
+    border-radius: 3px;
+    display: none;
+
+    .selectSuggestion {
+      margin: 7px 3px;
+      border-bottom: 1px solid rgba($color: black, $alpha: 0.3);
+    }
+    p {
+      font-size: 10px;
+      img {
+        width: 20px;
+        margin-bottom: -5px;
+        margin-right: 3px;
+      }
+    }
+  }
+
+  .textNone {
+    color: rgba($color: red, $alpha: 0.7);
+  }
+
+  #accordionMain {
+    margin: 20px 0px;
+    .topLvlAccItem {
+      .topLvlLabel {
+        cursor: pointer;
+        position: relative;
+        padding: 5px 0px;
+        background-color: #357688;
+        border-bottom: 2px solid white;
+        color: white;
+        height: 60px;
+        .menu-icon {
+          position: absolute;
+          top: 10%;
+          left: -1%;
+          width: 50px;
+        }
+        .menu-arrow {
+          position: absolute;
+          width: 20px;
+          top: 35%;
+          left: 16%;
+          transform: rotate(-90deg);
+        }
+        .open {
+          transform: rotate(0deg);
+        }
+        .label-text {
+          position: absolute;
+          top: 33%;
+          left: 26%;
+        }
+      }
+
+      .topLvlResults {
+        display: none;
+
+        .location-row {
+          border-bottom: 2px solid rgba($color: #357688, $alpha: 0.5);
+          height: 60px;
+          font-size: 14px;
+          position: relative;
+          cursor: pointer;
+          .menu-arrow {
+            position: absolute;
+            width: 20px;
+            top: 33%;
+            left: 2%;
+            transform: rotate(-90deg);
+          }
+          .open {
+            transform: rotate(0deg);
+          }
+          .location-label {
+            color: #357688;
+            position: absolute;
+            top: 21%;
+            left: 11%;
+            width: 90%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .location-distance {
+            color: #357688;
+            position: absolute;
+            top: 51%;
+            left: 11%;
+            width: 90%;
+          }
+        }
+        .location-details {
+          display: none;
+          padding-bottom: 15px;
+          div {
+            border-bottom: 1px solid rgba($color: #000000, $alpha: 0.3);
+            padding: 5px 0px;
+            .detail-label {
+              display: inline-block;
+              color: #357688;
+              font-size: 14px;
+              width: 43%;
+              vertical-align: top;
+              margin-top: 2px;
+            }
+            .detail-output {
+              display: inline-block;
+              font-size: 14px;
+              margin: 3px 0px;
+              width: 55%;
+            }
+            .detail-ftnote-label {
+              display: inline-block;
+              width: 40%;
+              color: black;
+              font-style: italic;
+              font-size: 10px;
+              vertical-align: top;
+            }
+            .detail-ftnote-output {
+              display: inline-block;
+              width: 58%;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #program-info {
+    // * {
+    //   border: 1px solid black;
+    // }
+    margin: 20px 0px;
+    h2 {
+      font-size: 18px;
+    }
+    .info-icon {
+      width: 50px;
+      margin-bottom: -5px;
+      display: inline-block;
+    }
+    p {
+      margin: 10px 0px;
+      display: inline-block;
+      width: 80%;
+      span {
+        font-weight: 700;
+        display: block;
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #357688;
+  padding: 20px 0px;
+
+  #foot-btns {
+    width: 90%;
+    padding: 5px;
+    margin: 0 auto;
+    .foot-btn {
+      padding: 10px 20px;
+      margin: 10px 0px;
+      width: 100%;
+      color: white;
+      background: rgba($color: #ffffff, $alpha: 0.1);
+      border-radius: 5px;
+      display: block;
+      font-size: 16px;
+      line-height: 200%;
+      .btn-icon {
+        display: inline-block;
+        width: 40px;
+        opacity: 1;
+        margin-bottom: -13px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  #foot-logos {
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      img {
+        width: 100%;
+      }
+    }
+    #SJ-logo {
+      width: 38%;
+    }
+    #SCC-logo {
+      width: 28%;
+    }
+    #CfSJ-logo {
+      width: 24%;
+    }
+  }
+}
+
+// Eases that awkward tablet size since the design didn't specify a tablet layout.
+// I basically made it a large version of the phone layout.
+@media screen and (min-width: 600px) {
+  main {
+    form {
+      width: 75%;
+      .labelMiles {
+        font-size: 13px;
+      }
+    }
+    #addressSearchSuggest {
+      width: 75%;
+    }
+    #accordionMain {
+      width: 75%;
+    }
+    #program-info {
+      width: 75%;
+      margin: 20px 0px;
+      h2 {
+        font-size: 18px;
+      }
+      .info-icon {
+        width: 50px;
+      }
+      p {
+        vertical-align: top;
+        margin-top: 15px;
+        width: 85%;
+        span {
+          display: inline-block;
+        }
+      }
+    }
+  }
+  footer {
+    #foot-btns {
+      .foot-btn {
+        width: 66%;
+      }
+    }
+    #foot-logos {
+      #SJ-logo {
+        width: 22%;
+      }
+      #SCC-logo {
+        width: 18%;
+      }
+      #CfSJ-logo {
+        width: 18%;
+      }
+    }
+  }
+}
+
+// Desktop layout
+@media screen and (min-width: 1000px) {
+  main {
+    .container {
+      padding: 175px 80px 40px 120px;
+    }
+    #plate_wtrmrk {
+      width: 450px;
+      opacity: 0.5;
+      position: absolute;
+      top: 0;
+      right: 10%;
+    }
+
+    #grocery_wtrmrk {
+      display: block;
+      opacity: 0.5;
+      position: absolute;
+      top: 400px;
+      right: 13%;
+      width: 275px;
+    }
+    h1 {
+      font-size: 36px;
+    }
+    #spanish,
+    #vietnamese {
+      font-size: 30px;
+      margin: 5px 0px;
+    }
+    form {
+      width: 70%;
+    }
+    .radio-cont {
+      width: 24%;
+      display: inline-block;
+    }
+
+    .labelMiles {
+      font-size: 13px;
+    }
+
+    #addressSearchSuggest {
+      width: 70%;
+    }
+
+    #accordionMain {
+      width: 70%;
+      margin: 20px 0px;
+      .topLvlAccItem {
+        .topLvlLabel {
+          &:hover {
+            background-color: #2d616e;
+          }
+          .menu-icon {
+            position: absolute;
+            top: 10%;
+            left: 1%;
+            width: 50px;
+          }
+          .menu-arrow {
+            position: absolute;
+            width: 20px;
+            top: 35%;
+            left: 10%;
+            transform: rotate(-90deg);
+          }
+          .open {
+            transform: rotate(0deg);
+          }
+          .label-text {
+            font-size: 20px;
+            position: absolute;
+            top: 29%;
+            left: 15%;
+          }
+        }
+        .topLvlResults {
+          .location-row {
+            &:hover {
+              background-color: #eeeeee;
+            }
+            .menu-arrow {
+              top: 35%;
+              left: 12%;
+            }
+            .open {
+              transform: rotate(0deg);
+            }
+            .location-label {
+              width: 80%;
+              font-size: 16px;
+              top: 17%;
+              left: 18%;
+            }
+            .location-distance {
+              width: 80%;
+              font-size: 16px;
+              top: 51%;
+              left: 18%;
+            }
+          }
+          .location-details {
+            div {
+              .detail-label {
+                font-size: 16px;
+                width: 25%;
+                margin-left: 18%;
+              }
+              .detail-output {
+                font-size: 16px;
+                width: 55%;
+              }
+              .detail-ftnote-label {
+                width: 25%;
+                font-size: 14px;
+                margin-left: 18%;
+              }
+              .detail-ftnote-output {
+                width: 55%;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+    #program-info {
+      h2 {
+        font-size: 18px;
+      }
+      .info-icon {
+        width: 50px;
+        margin-left: 50px;
+      }
+      p {
+        margin-top: 15px;
+        width: 80%;
+        span {
+          font-weight: 700;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  footer {
+    flex-direction: row;
+
+    .container {
+      padding: 20px 40px;
+      flex-direction: row;
+    }
+    #foot-btns {
+      width: 50%;
+      margin: 0;
+    }
+
+    #foot-logos {
+      width: 40%;
+      margin-left: auto;
+      margin-right: 0;
+      #SJ-logo {
+        width: 40%;
+      }
+      #SCC-logo {
+        width: 25%;
+      }
+      #CfSJ-logo {
+        width: 25%;
+      }
+    }
+  }
+}
