@@ -1,9 +1,9 @@
 # Find Free Food Near Me
-Look up free meal and groceries in  Santa Clara County to get through the  COVID-19 crisis
+Look up free meal and groceries in  Santa Clara County to get through the  COVID-19 crisis. View the [live site](https://www.codeforsanjose.com/free-food-lookup/)
 
 ## Notes from Designer
 
-[Current live site](https://gis.sanjoseca.gov/maps/covid19foodpublic/addresslookup/)
+[Initial live site from the City of San Jose](https://gis.sanjoseca.gov/maps/covid19foodpublic/addresslookup/)
 
 [Figma mockups](https://www.figma.com/file/NrW597pIrutfoRwm3pdVLs/Food-Lookup-Tool?node-id=0%3A1)
 
