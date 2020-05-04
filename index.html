@@ -2,111 +2,111 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santa Clara County Food Options</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
-        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <script src="./assets/js/csj_addressgeocodercounty.js" async></script>
-    <script src="./assets/js/csj_generalutilityfunctions.js" async></script>
-    <script src="./assets/js/setAccordion.js" async></script>
-    <script>
-        //jQuery functions for accordion menu
-        $(document).ready(function () {
-            $(document).on("click", "div.topLvlLabel", function () {
-                $(this).children(".menu-arrow").toggleClass("open")
-                $(this).siblings(".topLvlResults").slideToggle()
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Santa Clara County Food Options</title>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js"
+		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="./assets/css/styles.css">
+	<script src="./assets/js/csj_addressgeocodercounty.js" async></script>
+	<script src="./assets/js/csj_generalutilityfunctions.js" async></script>
+	<script src="./assets/js/setAccordion.js" async></script>
+	<script>
+		//jQuery functions for accordion menu
+		$(document).ready(function () {
+			$(document).on("click", "div.topLvlLabel", function () {
+				$(this).children(".menu-arrow").toggleClass("open")
+				$(this).siblings(".topLvlResults").slideToggle()
 
-                //This code is to close any sub menus that are open if a top level menu gets closed, but it doesn't work currently.
-                if ($(this).siblings(".topLvlResults").children(".location-row").children(
-                        ".menu-arrow")
-                    .hasClass("open")) {
-                    console.log("testing toggle")
-                    $(this).siblings(".topLvlResults").children(".location-details").slideToggle()
-                }
+				//This code is to close any sub menus that are open if a top level menu gets closed, but it doesn't work currently.
+				// if ($(this).siblings(".topLvlResults").children(".location-row").children(
+				// 		".menu-arrow")
+				// 	.hasClass("open")) {
+				// 	console.log("testing toggle")
+				// 	$(this).siblings(".topLvlResults").children(".location-details").slideToggle()
+				// }
 
 
-            });
-            $(document).on("click", "div.location-row", function () {
-                $(this).children(".menu-arrow").toggleClass("open")
-                $(this).next().slideToggle()
-            });
-        });
-    </script>
+			});
+			$(document).on("click", "div.location-row", function () {
+				$(this).children(".menu-arrow").toggleClass("open")
+				$(this).next().slideToggle()
+			});
+		});
+	</script>
 </head>
 
 <body>
 
-    <main>
-        <div class="container">
-            <img id="plate_wtrmrk" src="./assets/img/watermarks/plate_watermark.png" alt="plate with utensils">
-            <img id="grocery_wtrmrk" src="./assets/img/watermarks/grocery_watermark.png" alt="bag of groceries">
-            <h1>Find free food near me</h1>
-            <p id="spanish">Encuentra comida gratis cerca de mí</p>
-            <p id="vietnamese">Tìm đồ ăn miễn phí gần tôi</p>
-            <form>
-                <label for="address" id="address-label">Your address:</label>
-                <input type="text" id="addressSearch" oninput="getSearchSuggestions(this.value)"
-                    onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}">
-                <div class="radio-cont">
-                    <input type="radio" id="label1Mile" name="distance" value="1609" onchange="onChangeOfRadio()"
-                        checked>
-                    <label for="label1Mile" class="labelMiles">Walking (1 Mile)</label>
-                </div>
-                <div class="radio-cont">
-                    <input type="radio" id="label2Miles" name="distance" value="3218" onchange="onChangeOfRadio()">
-                    <label for="label2Miles" class="labelMiles">Biking (2 Miles)</label>
-                </div>
-                <div class="radio-cont">
-                    <input type="radio" id="label5Miles" name="distance" value="8046" onchange="onChangeOfRadio()">
-                    <label for="label5Miles" class="labelMiles">Driving (5 Miles)</label>
-                </div>
-                <div class="radio-cont">
-                    <input type="radio" id="label10Miles" name="distance" value="16093" onchange="onChangeOfRadio()">
-                    <label for="label10Miles" class="labelMiles">Driving (10 Miles)</label>
-                </div>
-            </form>
-            <div id="addressSearchSuggest"></div>
-            <div class="accordion" id="accordionMain"></div>
-            <div id="program-info">
-                <h2>Find the following near you:</h2>
-                <img class="info-icon" src="./assets/img/icons/icon_senior_black.png" alt="senior icon">
-                <p><span>Senior meal programs</span> for seniors 60 yrs & older</p>
-                <img class="info-icon" src="./assets/img/icons/icon_school_black.png" alt="student icon">
-                <p><span>School meal programs</span> for youth 18 yrs & younger</p>
-                <img class="info-icon" src="./assets/img/icons/icon_community_black.png" alt="community icon">
-                <p><span>Community meal programs</span> serving all ages</p>
-                <img class="info-icon" src="./assets/img/icons/icon_grocery_black.png" alt="senior icon">
-                <p><span>Free groceries</span> for low-income residents</p>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <div class="container">
-            <div id="foot-btns">
-                <a href="https://gis.sanjoseca.gov/maps/covid19foodpublic" class="foot-btn"><img class="btn-icon"
-                        src="./assets/img/icons/icon_map_pin.png" alt="map pin icon">Map
-                    view</a>
-                <a href="https://www.sanjoseca.gov/home/showdocument?id=56301" class="foot-btn" target="_blank"
-                    rel="noopener noreferrer"><img class="btn-icon" src="./assets/img/icons/icon_dl.png"
-                        alt="download icon">Get PDF (Kids 18-)</a>
-                <a href="https://www.sanjoseca.gov/home/showdocument?id=56299" class="foot-btn" target="_blank"
-                    rel="noopener noreferrer"><img class="btn-icon" src="./assets/img/icons/icon_dl.png"
-                        alt="download icon">Get PDF (Seniors 60+)</a>
-            </div>
-            <div id="foot-logos">
-                <a id="SJ-logo" target="_blank" rel="noopener noreferrer" href="https://www.sanjoseca.gov/home"><img
-                        src="./assets/img/logos/logo_sanjose_white.png" alt="City of San José logo"></a>
-                <a id="SCC-logo" target="_blank" rel="noopener noreferrer"
-                    href="https://www.sccgov.org/sites/scc/Documents/home.html"><img
-                        src="./assets/img/logos/logo_SCC_white.png" alt="County of Santa Clara logo"></a>
-                <a id="CfSJ-logo" target="_blank" rel="noopener noreferrer" href="https://www.codeforsanjose.com/"><img
-                        src="./assets/img/logos/logo-CfSJ-white.png" alt="Code for San José logo"></a>
-            </div>
-        </div>
-    </footer>
+	<main>
+		<div class="container">
+			<img id="plate_wtrmrk" src="./assets/img/watermarks/plate_watermark.png" alt="plate with utensils">
+			<img id="grocery_wtrmrk" src="./assets/img/watermarks/grocery_watermark.png" alt="bag of groceries">
+			<h1>Find free food near me</h1>
+			<p id="spanish">Encuentra comida gratis cerca de mí</p>
+			<p id="vietnamese">Tìm đồ ăn miễn phí gần tôi</p>
+			<form>
+				<label for="address" id="address-label">Your address:</label>
+				<input type="text" id="addressSearch" oninput="getSearchSuggestions(this.value)"
+					onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}">
+				<div class="radio-cont">
+					<input type="radio" id="label1Mile" name="distance" value="1609" onchange="onChangeOfRadio()"
+						checked>
+					<label for="label1Mile" class="labelMiles">Walking (1 Mile)</label>
+				</div>
+				<div class="radio-cont">
+					<input type="radio" id="label2Miles" name="distance" value="3218" onchange="onChangeOfRadio()">
+					<label for="label2Miles" class="labelMiles">Biking (2 Miles)</label>
+				</div>
+				<div class="radio-cont">
+					<input type="radio" id="label5Miles" name="distance" value="8046" onchange="onChangeOfRadio()">
+					<label for="label5Miles" class="labelMiles">Driving (5 Miles)</label>
+				</div>
+				<div class="radio-cont">
+					<input type="radio" id="label10Miles" name="distance" value="16093" onchange="onChangeOfRadio()">
+					<label for="label10Miles" class="labelMiles">Driving (10 Miles)</label>
+				</div>
+			</form>
+			<div id="addressSearchSuggest"></div>
+			<div class="accordion" id="accordionMain"></div>
+			<div id="program-info">
+				<h2>Find the following near you:</h2>
+				<img class="info-icon" src="./assets/img/icons/icon_senior_black.png" alt="senior icon">
+				<p><span>Senior meal programs</span> for seniors 60 yrs & older</p>
+				<img class="info-icon" src="./assets/img/icons/icon_school_black.png" alt="student icon">
+				<p><span>School meal programs</span> for youth 18 yrs & younger</p>
+				<img class="info-icon" src="./assets/img/icons/icon_community_black.png" alt="community icon">
+				<p><span>Community meal programs</span> serving all ages</p>
+				<img class="info-icon" src="./assets/img/icons/icon_grocery_black.png" alt="grocery icon">
+				<p><span>Free groceries</span> for low-income residents</p>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="container">
+			<div id="foot-btns">
+				<a href="https://gis.sanjoseca.gov/maps/covid19foodpublic" class="foot-btn"><img class="btn-icon"
+						src="./assets/img/icons/icon_map_pin.png" alt="map pin icon">Map
+					view</a>
+				<a href="https://www.sanjoseca.gov/home/showdocument?id=56301" class="foot-btn" target="_blank"
+					rel="noopener noreferrer"><img class="btn-icon" src="./assets/img/icons/icon_dl.png"
+						alt="download icon">Get PDF (Kids 18-)</a>
+				<a href="https://www.sanjoseca.gov/home/showdocument?id=56299" class="foot-btn" target="_blank"
+					rel="noopener noreferrer"><img class="btn-icon" src="./assets/img/icons/icon_dl.png"
+						alt="download icon">Get PDF (Seniors 60+)</a>
+			</div>
+			<div id="foot-logos">
+				<a id="SJ-logo" target="_blank" rel="noopener noreferrer" href="https://www.sanjoseca.gov/home"><img
+						src="./assets/img/logos/logo_sanjose_white.png" alt="City of San José logo"></a>
+				<a id="SCC-logo" target="_blank" rel="noopener noreferrer"
+					href="https://www.sccgov.org/sites/scc/Documents/home.html"><img
+						src="./assets/img/logos/logo_SCC_white.png" alt="County of Santa Clara logo"></a>
+				<a id="CfSJ-logo" target="_blank" rel="noopener noreferrer" href="https://www.codeforsanjose.com/"><img
+						src="./assets/img/logos/logo-CfSJ-white.png" alt="Code for San José logo"></a>
+			</div>
+		</div>
+	</footer>
 </body>
 
 </html>
