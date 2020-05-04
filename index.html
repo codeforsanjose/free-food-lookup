@@ -212,6 +212,15 @@
 			cursor: pointer;
 		}
 
+		section.container {
+			min-height: 80vh;
+		}
+
+		.footer {
+			position: absolute;
+			bottom: 0;
+		}
+
 		@media screen and (max-width: 600px) {
 			#grocery_wtrmrk {
 				display: none;
@@ -242,7 +251,7 @@
 </head>
 
 <body>
-	<div id="container" style="min-height: 100%; width: 100%; position: relative">
+	<div id="container" style="min-height: 100vh; width: 100%; position: relative; padding-bottom: 200px;">
 		<img id="plate_wtrmrk" src="./assets/img/plate_watermark.png" alt="plate with utensils">
 		<img id="grocery_wtrmrk" src="./assets/img/grocery_watermark.png" alt="bag of groceries">
 		<section class="container max-width-sm" style="padding-top: 5em">
