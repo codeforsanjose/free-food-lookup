@@ -79,8 +79,15 @@ main {
     display: inline-block;
   }
 
+  input[type="radio"] {
+    border: 0px;
+    width: 22px;
+    height: 22px;
+  }
+
   .labelMiles {
     font-size: 14px;
+    vertical-align: top;
   }
 
   #addressSearchSuggest {
@@ -306,7 +313,7 @@ footer {
     form {
       width: 75%;
       .labelMiles {
-        font-size: 13px;
+        font-size: 14px;
       }
     }
     #addressSearchSuggest {

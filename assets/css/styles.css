@@ -87,8 +87,15 @@ main .radio-cont {
   display: inline-block;
 }
 
+main input[type="radio"] {
+  border: 0px;
+  width: 22px;
+  height: 22px;
+}
+
 main .labelMiles {
   font-size: 14px;
+  vertical-align: top;
 }
 
 main #addressSearchSuggest {
@@ -349,7 +356,7 @@ footer #foot-logos #CfSJ-logo {
     width: 75%;
   }
   main form .labelMiles {
-    font-size: 13px;
+    font-size: 14px;
   }
   main #addressSearchSuggest {
     width: 75%;
