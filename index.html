@@ -245,102 +245,99 @@
 	<div id="container" style="min-height: 100%; width: 100%; position: relative">
 		<img id="plate_wtrmrk" src="./assets/img/plate_watermark.png" alt="plate with utensils">
 		<img id="grocery_wtrmrk" src="./assets/img/grocery_watermark.png" alt="bag of groceries">
-		<div style="padding-bottom: 200px">
-			<section class="container max-width-sm" style="padding-top: 5em">
+		<section class="container max-width-sm" style="padding-top: 5em">
 
-				<div class="text-component" id="addressContainer">
-					<!--<p><a href="https://codyhouse.co/gem/css-multi-level-accordion-menu" class="cd-article-link">Article & Download</a></p>-->
-					<h1>Find free food near me</h1>
-					<h1 class="translated">Encuentra comida gratis cerca de mí</h1>
-					<h1 class="translated">Tìm đồ ăn miễn phí gần tôi</h1>
+			<div class="text-component" id="addressContainer">
+				<!--<p><a href="https://codyhouse.co/gem/css-multi-level-accordion-menu" class="cd-article-link">Article & Download</a></p>-->
+				<h1>Find free food near me</h1>
+				<h1 class="translated">Encuentra comida gratis cerca de mí</h1>
+				<h1 class="translated">Tìm đồ ăn miễn phí gần tôi</h1>
 
-					<!--START Address Box-->
-					<div style="padding-top: 30px;">
-						<label style="font-style: normal; font-weight: 600; font-size: 22px; line-height: 30px;">
-							Enter your address:
-							<input id="addressSearch" type="text" oninput="getSearchSuggestions(this.value)"
-								onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}" />
-						</label>
-					</div>
-
-
-					<!-- Radio buttons -->
-					<div class=addressContainer style="padding-top:40px;">
-						<div class="distance-row" style="display:inline-block;padding-bottom:10px;">
-							<div class="distance-option-container"
-								style="padding-right:10px;width:min-content;display:inline;">
-								<input type="radio" id="label1Mile" name="gender" value="1609"
-									onchange="onChangeOfRadio()">
-								<!--value is in meters-->
-								<label for="label1Mile" class="labelMiles">Walking&nbsp;(1&nbsp;Mile)&nbsp;</label>
-							</div>
-							<div class="distance-option-container"
-								style="padding-right:10px;width:min-content;display:inline;">
-								<input type="radio" id="label2Miles" name="gender" value="3218"
-									onchange="onChangeOfRadio()" checked>
-								<label for="label2Miles" class="labelMiles">Biking&nbsp;(2&nbsp;Miles)&nbsp;</label>
-							</div>
-						</div>
-						<div class="distance-row" style="display:inline-block;padding-bottom:10px;">
-							<div class="distance-option-container"
-								style="padding-right:10px;width:min-content;display:inline;">
-								<input type="radio" id="label5Miles" name="gender" value="8046"
-									onchange="onChangeOfRadio()">
-								<label for="label5Miles" class="labelMiles">Driving&nbsp;(5&nbsp;Miles)&nbsp;</label>
-							</div>
-							<div class="distance-option-container"
-								style="padding-right:10px;width:min-content;display:inline;">
-								<input type="radio" id="label10Miles" name="gender" value="16093"
-									onchange="onChangeOfRadio()">
-								<label for="label10Miles" class="labelMiles">Driving&nbsp;(10&nbsp;Miles)&nbsp;</label>
-							</div>
-						</div>
-					</div>
-
-					<div id="addressSearchSuggest"></div>
+				<!--START Address Box-->
+				<div style="padding-top: 30px;">
+					<label style="font-style: normal; font-weight: 600; font-size: 22px; line-height: 30px;">
+						Enter your address:
+						<input id="addressSearch" type="text" oninput="getSearchSuggestions(this.value)"
+							onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}" />
+					</label>
 				</div>
-				<!--END Address Box-->
 
-				<!--Main content. ID accordionMain innerHTML will get replaced by HTML from javascript-->
-				<div id="accordionMain" style="padding: 30px 0px;">
-					<div id="lookup-cta" style=" color: black">
-						<p style="font-size: +1em"><strong>Look up the following near you:</strong></p>
-						<ul style="padding: 10px;">
-							<li class="meals_li"><img alt="Senior Meal programs" class="blk_icon"
-									src="assets/img/icon_senior_black.png" />
-								<p class="meals_li_p" style="display:inline-block"><strong>Senior
-										meal
-										programs</strong> for seniors 60 yrs & older </p>
-							</li>
-							<li class="meals_li"><img alt="School meal programs" class="blk_icon"
-									src="assets/img/icon_school_black.png" />
-								<p class="meals_li_p" style="display:inline-block"><strong>School
-										meal
-										programs</strong> for youth 18 yrs & younger </p>
-							</li>
-							<li class="meals_li"><img alt="Community meal programs" class="blk_icon"
-									src="assets/img/icon_community_black.png" />
-								<p class="meals_li_p" style="display:inline-block"><strong>Community meal
-										programs</strong> serving all
-									ages</p>
-							</li>
-							<li class="meals_li"><img alt="Grocery programs" class="blk_icon"
-									src="assets/img/icon_grocery_black.png" />
-								<p class="meals_li_p" style="display:inline-block"><strong>Grocery
-										programs</strong> for low-income residents</p>
-							</li>
-						</ul>
+
+				<!-- Radio buttons -->
+				<div class=addressContainer style="padding-top:40px;">
+					<div class="distance-row" style="display:inline-block;padding-bottom:10px;">
+						<div class="distance-option-container"
+							style="padding-right:10px;width:min-content;display:inline;">
+							<input type="radio" id="label1Mile" name="gender" value="1609" onchange="onChangeOfRadio()">
+							<!--value is in meters-->
+							<label for="label1Mile" class="labelMiles">Walking&nbsp;(1&nbsp;Mile)&nbsp;</label>
+						</div>
+						<div class="distance-option-container"
+							style="padding-right:10px;width:min-content;display:inline;">
+							<input type="radio" id="label2Miles" name="gender" value="3218" onchange="onChangeOfRadio()"
+								checked>
+							<label for="label2Miles" class="labelMiles">Biking&nbsp;(2&nbsp;Miles)&nbsp;</label>
+						</div>
 					</div>
-					<ul class="cd-accordion cd-accordion--animated margin-top-lg margin-bottom-lg">
+					<div class="distance-row" style="display:inline-block;padding-bottom:10px;">
+						<div class="distance-option-container"
+							style="padding-right:10px;width:min-content;display:inline;">
+							<input type="radio" id="label5Miles" name="gender" value="8046"
+								onchange="onChangeOfRadio()">
+							<label for="label5Miles" class="labelMiles">Driving&nbsp;(5&nbsp;Miles)&nbsp;</label>
+						</div>
+						<div class="distance-option-container"
+							style="padding-right:10px;width:min-content;display:inline;">
+							<input type="radio" id="label10Miles" name="gender" value="16093"
+								onchange="onChangeOfRadio()">
+							<label for="label10Miles" class="labelMiles">Driving&nbsp;(10&nbsp;Miles)&nbsp;</label>
+						</div>
+					</div>
+				</div>
+
+				<div id="addressSearchSuggest"></div>
+			</div>
+			<!--END Address Box-->
+
+			<!--Main content. ID accordionMain innerHTML will get replaced by HTML from javascript-->
+			<div id="accordionMain" style="padding: 30px 0px;">
+				<div id="lookup-cta" style=" color: black">
+					<p style="font-size: +1em"><strong>Look up the following near you:</strong></p>
+					<ul style="padding: 10px;">
+						<li class="meals_li"><img alt="Senior Meal programs" class="blk_icon"
+								src="assets/img/icon_senior_black.png" />
+							<p class="meals_li_p" style="display:inline-block"><strong>Senior
+									meal
+									programs</strong> for seniors 60 yrs & older </p>
+						</li>
+						<li class="meals_li"><img alt="School meal programs" class="blk_icon"
+								src="assets/img/icon_school_black.png" />
+							<p class="meals_li_p" style="display:inline-block"><strong>School
+									meal
+									programs</strong> for youth 18 yrs & younger </p>
+						</li>
+						<li class="meals_li"><img alt="Community meal programs" class="blk_icon"
+								src="assets/img/icon_community_black.png" />
+							<p class="meals_li_p" style="display:inline-block"><strong>Community meal
+									programs</strong> serving all
+								ages</p>
+						</li>
+						<li class="meals_li"><img alt="Grocery programs" class="blk_icon"
+								src="assets/img/icon_grocery_black.png" />
+							<p class="meals_li_p" style="display:inline-block"><strong>Grocery
+									programs</strong> for low-income residents</p>
+						</li>
 					</ul>
 				</div>
-				<!--END Main content-->
+				<ul class="cd-accordion cd-accordion--animated margin-top-lg margin-bottom-lg">
+				</ul>
+			</div>
+			<!--END Main content-->
 
-			</section>
-		</div>
+		</section>
 
 		<footer class="footer"
-			style="background-color: #07414c; position: fixed; left: 0; bottom: 0; width: 100%; height: 200px; padding: 30px;">
+			style="background-color: #07414c;  width: 100%; height: 200px; padding: 30px; margin-top:50px;">
 			<!--Map button, just using the address style classes again-->
 			<div class="footer-container">
 				<div class="column">
