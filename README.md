@@ -1,5 +1,6 @@
 # Find Free Food Near Me
-Look up free meal and groceries in  Santa Clara County to get through the  COVID-19 crisis. View the [live site](https://www.codeforsanjose.com/free-food-lookup/)
+Look up free meal and groceries in  Santa Clara County to get through the  COVID-19 crisis. 
+View the [live site](https://www.codeforsanjose.com/free-food-lookup/)
 
 ## Notes from Designer
 
@@ -7,24 +8,15 @@ Look up free meal and groceries in  Santa Clara County to get through the  COVID
 
 [Figma mockups](https://www.figma.com/file/NrW597pIrutfoRwm3pdVLs/Food-Lookup-Tool?node-id=0%3A1)
 
-Email Julie if you have questions: julie.kim@sanjoseca.gov
+Email Julie Kim if you have questions: julie.kim@sanjoseca.gov
 
+## Notes from Developer
 
-## Multi-Level Accordion Menu
+This front-end recode was written on 5-1-2020 by Dane Olsen: dkowebdev@gmail.com
 
-A simple CSS accordion menu with support for sub level items.
-
-[Article on CodyHouse](https://codyhouse.co/gem/css-multi-level-accordion-menu)
-
-[Demo](https://codyhouse.co/demo/multi-level-accordion-menu)
-
-[License](https://codyhouse.co/license)
-
-## Dependencies
-
-This experiment is built upon the [CodyHouse Framework](https://github.com/CodyHouse/codyhouse-framework).
-
-Make sure to include both the style.scss and util.js files of the framework.
+## Technology
+- HTML, CSS, JavaScript, and jQuery for accordion menu functionality
+- We used Google Fonts for site font Noto Sans
 
 ## Credits
 
