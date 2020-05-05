@@ -254,7 +254,7 @@ function populateAccordion(
         </div>\
       `;
     }
-    var injectionHeadingHtml = nameType + " (" + data.length + ")";
+    var injectionHeadingHtml = nameType + " (" + data.length + " results)";
   }
   document.getElementById(labelType).innerHTML = injectionHeadingHtml;
   document.getElementById(dataType).innerHTML = injectionHtml;

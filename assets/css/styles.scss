@@ -88,8 +88,9 @@ main {
   }
 
   .labelMiles {
-    font-size: 14px;
+    font-size: 13px;
     vertical-align: top;
+    font-weight: 700;
   }
 
   #addressSearchSuggest {
@@ -124,7 +125,7 @@ main {
         cursor: pointer;
         position: relative;
         padding: 5px 0px;
-        background-color: #357688;
+        background-color: #006075;
         border-bottom: 2px solid white;
         color: white;
         height: 60px;
@@ -145,8 +146,9 @@ main {
           transform: rotate(0deg);
         }
         .label-text {
+          font-size: 14px;
           position: absolute;
-          top: 33%;
+          top: 38%;
           left: 26%;
         }
       }
@@ -254,7 +256,7 @@ footer {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #357688;
+  background-color: #006075;
   padding: 20px 0px;
   margin-top: 30px;
 
