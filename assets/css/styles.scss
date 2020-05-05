@@ -67,16 +67,18 @@ main {
   #addressSearch {
     display: block;
     width: 100%;
-    padding: 5px;
+    padding: 10px;
     font-size: 18px;
     border: 1px solid #000000;
     border-radius: 3px;
-    margin: 5px 0px;
+    margin: 10px 0px;
   }
 
   .radio-cont {
     width: 49%;
+    height: 48px;
     display: inline-block;
+    padding: 13px 0px;
   }
 
   input[type="radio"] {
@@ -116,7 +118,7 @@ main {
   }
 
   #accordionMain {
-    margin: 20px 0px;
+    margin: 10px 0px;
     .topLvlAccItem {
       .topLvlLabel {
         cursor: pointer;
@@ -196,7 +198,7 @@ main {
               display: inline-block;
               color: #357688;
               font-size: 14px;
-              width: 43%;
+              width: 40%;
               vertical-align: top;
               margin-top: 2px;
             }
@@ -204,18 +206,19 @@ main {
               display: inline-block;
               font-size: 14px;
               margin: 3px 0px;
-              width: 55%;
+              width: 58%;
             }
             .detail-ftnote-label {
               display: inline-block;
               width: 40%;
               color: black;
               font-style: italic;
-              font-size: 10px;
+              font-size: 11px;
               vertical-align: top;
             }
             .detail-ftnote-output {
               display: inline-block;
+              vertical-align: top;
               width: 58%;
               font-size: 12px;
             }
@@ -226,9 +229,6 @@ main {
   }
 
   #program-info {
-    // * {
-    //   border: 1px solid black;
-    // }
     margin: 20px 0px;
     h2 {
       font-size: 18px;
@@ -256,6 +256,7 @@ footer {
   width: 100%;
   background-color: #357688;
   padding: 20px 0px;
+  margin-top: 30px;
 
   #foot-btns {
     width: 90%;
@@ -348,6 +349,7 @@ footer {
       }
     }
     #foot-logos {
+      justify-content: space-evenly;
       #SJ-logo {
         width: 22%;
       }
@@ -393,14 +395,16 @@ footer {
     }
     form {
       width: 70%;
-    }
-    .radio-cont {
-      width: 24%;
-      display: inline-block;
-    }
 
-    .labelMiles {
-      font-size: 13px;
+      .radio-cont {
+        width: 24%;
+        display: inline-block;
+        padding: 5px 0px;
+      }
+
+      .labelMiles {
+        font-size: 16px;
+      }
     }
 
     #addressSearchSuggest {
