@@ -191,7 +191,6 @@ function populateAccordion(
 ) {
   //distance, sort, slice
   data = calculateDistanceSortSlice(data, foundLat, foundLng);
-
   var injectionHtml = "";
   if (data.length == 0) {
     var injectionHeadingHtml =
@@ -211,23 +210,29 @@ function populateAccordion(
             <span class="detail-output">${data[i].SiteName}</span>
             </div>
             <div>
-            <span class="detail-label">About:</span>
+            <span class="detail-label">Address:</span>
             <span class="detail-output">${data[i].SiteAddress}</span>
             </div>
             <div>
-            <span class="detail-label">More Details:</span>
-            <span class="detail-output">${data[i].Description}</span>
+            <span class="detail-label">Details:</span>
+            <span class="detail-output">${data[i].Description.replace(
+              "None",
+              "Not Provided"
+            )}</span>
             </div>
             <div>
             <span class="detail-label">Phone number:</span>
-            <span class="detail-output">${data[i].PhoneNumber}</span>
+            <span class="detail-output">${data[i].PhoneNumber.replace(
+              "None",
+              "Not Provided"
+            )}</span>
             </div>
             <div>
             <span class="detail-label">Website:</span>
             <span class="detail-output">${checkWebLink(data[i].WebLink)}</span>
             </div>
             <div>
-            <span class="detail-label">Program address:</span>
+            <span class="detail-label">Directions:</span>
             <span class="detail-output">
            
             <a href="https://www.google.com/maps/dir/${userAddress}/${
@@ -237,19 +242,41 @@ function populateAccordion(
             </div>
             <div>
             <span class="detail-label">Days open:</span>
-            <span class="detail-output">${data[i].OpenDays}</span>
+            <span class="detail-output">${data[i].OpenDays.replace(
+              "None",
+              "Not Provided"
+            )}</span>
             </div>
             <div>
             <span class="detail-label">Hours open:</span>
-            <span class="detail-output">${data[i].OpenTimes}</span>
+            <span class="detail-output">${data[i].OpenTimes.replace(
+              "None",
+              "Not Provided"
+            )}</span>
+            </div>
+            <div>
+            <span class="detail-label">Additional details:</span>
+            <span class="detail-output">${data[i].DescriptionLong.replace(
+              "None",
+              "Not Provided"
+            )}</span>
             </div>
             <div>
             <span class="detail-ftnote-label">Dates in operation:</span>
-            <span class="detail-ftnote-output">${data[i].OpenDates}</span>
+            <span class="detail-ftnote-output">${data[i].OpenDates.replace(
+              "None",
+              "Not Provided"
+            )}</span>
             <span class="detail-ftnote-label">Location type:</span>
-            <span class="detail-ftnote-output">${data[i].SiteType}</span>
+            <span class="detail-ftnote-output">${data[i].SiteType.replace(
+              "None",
+              "Not Provided"
+            )}</span>
             <span class="detail-ftnote-label">Last updated:</span>
-            <span class="detail-ftnote-output">${data[i].LastUpdated}</span>
+            <span class="detail-ftnote-output">${data[i].LastUpdated.replace(
+              "None",
+              "Not Provided"
+            )}</span>
             </div>
         </div>\
       `;
@@ -265,7 +292,7 @@ function checkWebLink(link) {
     //I assume a length will be pretty long, and N/A, None, or "" is shorter than 10.
     var newLink = '<a href="' + link + '" target="_blank">Website</a>';
   } else {
-    var newLink = "None";
+    var newLink = "Not Provided";
   }
   return newLink;
 }

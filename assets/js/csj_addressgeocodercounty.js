@@ -15,7 +15,7 @@ function getSearchSuggestions(userTypedAddress) {
     request.onload = function () {
       // Begin accessing JSON data here
       var data = JSON.parse(this.response);
-      console.log(data);
+      // console.log(data);
       var insertSuggestions = "";
       for (i = 0; i < data.suggestions.length; i++) {
         insertSuggestions +=
@@ -72,7 +72,7 @@ function searchForThisAddress(typedAddress, magicKey) {
   request.onload = function () {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
-    console.log(data);
+    // console.log(data);
     var foundAddress = data.candidates[0].address;
     var foundStreet =
       data.candidates[0].attributes.StName +
