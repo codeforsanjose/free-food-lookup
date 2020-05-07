@@ -1,5 +1,6 @@
 //////////////////ADDRESS SUGGESTIONS//////////////////
 function getSearchSuggestions(userTypedAddress) {
+  document.getElementById("error").innerText = "";
   if (userTypedAddress.length > 3) {
     var request = new XMLHttpRequest();
 
@@ -73,16 +74,21 @@ function searchForThisAddress(typedAddress, magicKey) {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
     // console.log(data);
-    var foundAddress = data.candidates[0].address;
-    var foundStreet =
-      data.candidates[0].attributes.StName +
-      "" +
-      data.candidates[0].attributes.StType; //don't need a space, its built into TYPE field
-    var foundLat = data.candidates[0].location.y;
-    var foundLng = data.candidates[0].location.x;
-    document.getElementById("addressSearchSuggest").style.display = "none";
-    document.getElementById("addressSearch").value = foundAddress;
-    callApiAndBuildJson(foundLat, foundLng, foundAddress);
+    if (data.candidates[0]) {
+      var foundAddress = data.candidates[0].address;
+      var foundStreet =
+        data.candidates[0].attributes.StName +
+        "" +
+        data.candidates[0].attributes.StType; //don't need a space, its built into TYPE field
+      var foundLat = data.candidates[0].location.y;
+      var foundLng = data.candidates[0].location.x;
+      document.getElementById("addressSearchSuggest").style.display = "none";
+      document.getElementById("addressSearch").value = foundAddress;
+      callApiAndBuildJson(foundLat, foundLng, foundAddress);
+    } else {
+      document.getElementById("error").innerText =
+        "No address found. Please try again.";
+    }
   };
 
   // Send request

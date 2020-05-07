@@ -50,6 +50,7 @@
 			<p id="vietnamese">Tìm đồ ăn miễn phí gần tôi</p>
 			<form onsubmit="event.preventDefault()">
 				<label for="addressSearch" id="address-label">Enter your address:</label>
+				<span id="error"></span>
 				<input type="text" id="addressSearch" oninput="getSearchSuggestions(this.value)"
 					onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}">
 				<div class="radio-cont">

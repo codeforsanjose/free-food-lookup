@@ -64,6 +64,15 @@ main {
     display: block;
     margin-top: 10px;
   }
+
+  #error {
+    color: red;
+    font-weight: 700;
+    height: 20px;
+    padding: 5px 0px;
+    display: block;
+  }
+
   #addressSearch {
     display: block;
     width: 100%;
