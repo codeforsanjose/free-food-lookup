@@ -48,7 +48,7 @@
 			<h1>Find free food near me</h1>
 			<p id="spanish">Encuentra comida gratis cerca de mí</p>
 			<p id="vietnamese">Tìm đồ ăn miễn phí gần tôi</p>
-			<form>
+			<form onsubmit="event.preventDefault()">
 				<label for="addressSearch" id="address-label">Enter your address:</label>
 				<input type="text" id="addressSearch" oninput="getSearchSuggestions(this.value)"
 					onkeypress="if(event.which == 13 || event.keyCode == 13){searchForThisAddress(this.value, null)}">
