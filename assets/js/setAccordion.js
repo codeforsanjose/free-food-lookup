@@ -198,88 +198,62 @@ function populateAccordion(
   } else {
     for (i = 0; i < data.length; i++) {
       //Fills out each accordion span with innerHTML and injects it.
-      injectionHtml += `\
-        <div class="location-row">
+      injectionHtml += '\
+        <div class="location-row">\
             <img class="menu-arrow" src="assets/img/icons/icon_arrow_teal.png" />\
-            <span class="location-label">${data[i].SiteName}</span>
-            <span class="location-distance"> (${data[i].Distance} miles)</span>\
-        </div>
-        <div class="location-details">\
-            <div>
-            <span class="detail-label">Location name:</span>
-            <span class="detail-output">${data[i].SiteName}</span>
-            </div>
-            <div>
-            <span class="detail-label">Address:</span>
-            <span class="detail-output">${data[i].SiteAddress}</span>
-            </div>
-            <div>
-            <span class="detail-label">Details:</span>
-            <span class="detail-output">${data[i].Description.replace(
-              "None",
-              "Not Provided"
-            )}</span>
-            </div>
-            <div>
-            <span class="detail-label">Phone number:</span>
-            <span class="detail-output">${data[i].PhoneNumber.replace(
-              "None",
-              "Not Provided"
-            )}</span>
-            </div>
-            <div>
-            <span class="detail-label">Website:</span>
-            <span class="detail-output">${checkWebLink(data[i].WebLink)}</span>
-            </div>
-            <div>
-            <span class="detail-label">Directions:</span>
-            <span class="detail-output">
-           
-            <a href="https://www.google.com/maps/dir/${userAddress}/${
-        data[i].SiteAddress
-      }" target="_blank" rel="noopener noreferrer">Google Maps</a>
-            </span>
-            </div>
-            <div>
-            <span class="detail-label">Days open:</span>
-            <span class="detail-output">${data[i].OpenDays.replace(
-              "None",
-              "Not Provided"
-            )}</span>
-            </div>
-            <div>
-            <span class="detail-label">Hours open:</span>
-            <span class="detail-output">${data[i].OpenTimes.replace(
-              "None",
-              "Not Provided"
-            )}</span>
-            </div>
-            <div>
-            <span class="detail-label">Additional details:</span>
-            <span class="detail-output">${data[i].DescriptionLong.replace(
-              "None",
-              "Not Provided"
-            )}</span>
-            </div>
-            <div>
-            <span class="detail-ftnote-label">Dates in operation:</span>
-            <span class="detail-ftnote-output">${data[i].OpenDates.replace(
-              "None",
-              "Not Provided"
-            )}</span>
-            <span class="detail-ftnote-label">Location type:</span>
-            <span class="detail-ftnote-output">${data[i].SiteType.replace(
-              "None",
-              "Not Provided"
-            )}</span>
-            <span class="detail-ftnote-label">Last updated:</span>
-            <span class="detail-ftnote-output">${data[i].LastUpdated.replace(
-              "None",
-              "Not Provided"
-            )}</span>
-            </div>
+            <span class="location-label">'+data[i].SiteName+'</span>\
+            <span class="location-distance"> ('+data[i].Distance+' miles)</span>\
         </div>\
-      `;
+        <div class="location-details">\
+            <div>\
+            <span class="detail-label">Location name:</span>\
+            <span class="detail-output">'+data[i].SiteName+'</span>\
+            </div>\
+            <div>\
+            <span class="detail-label">Address:</span>\
+            <span class="detail-output">'+data[i].SiteAddress+'</span>\
+            </div>\
+            <div>\
+            <span class="detail-label">Details:</span>\
+            <span class="detail-output">'+data[i].Description.replace("None","Not Provided")+'</span>\
+            </div>\
+            <div>\
+            <span class="detail-label">Phone number:</span>\
+            <span class="detail-output">'+data[i].PhoneNumber.replace("None","Not Provided")+'</span>\
+            </div>\
+            <div>\
+            <span class="detail-label">Website:</span>\
+            <span class="detail-output">'+checkWebLink(data[i].WebLink)+'</span>\
+            </div>\
+            <div>\
+            <span class="detail-label">Directions:</span>\
+            <span class="detail-output">\
+           \
+            <a href="https://www.google.com/maps/dir/'+userAddress+'/'+data[i].SiteAddress+'" target="_blank" rel="noopener noreferrer">Google Maps</a>\
+            </span>\
+            </div>\
+            <div>\
+            <span class="detail-label">Days open:</span>\
+            <span class="detail-output">'+data[i].OpenDays.replace("None","Not Provided")+'</span>\
+            </div>\
+            <div>\
+            <span class="detail-label">Hours open:</span>\
+            <span class="detail-output">'+data[i].OpenTimes.replace("None","Not Provided")+'</span>\
+            </div>\
+            <div>\
+            <span class="detail-label">Additional details:</span>\
+            <span class="detail-output">'+data[i].DescriptionLong.replace("None","Not Provided")+'</span>\
+            </div>\
+            <div>\
+            <span class="detail-ftnote-label">Dates in operation:</span>\
+            <span class="detail-ftnote-output">'+data[i].OpenDates.replace("None","Not Provided")+'</span>\
+            <span class="detail-ftnote-label">Location type:</span>\
+            <span class="detail-ftnote-output">'+data[i].SiteType.replace("None","Not Provided")+'</span>\
+            <span class="detail-ftnote-label">Last updated:</span>\
+            <span class="detail-ftnote-output">'+data[i].LastUpdated.replace("None","Not Provided")+'</span>\
+            </div>\
+        </div>\
+      ';
     }
     var injectionHeadingHtml = nameType + " (" + data.length + " results)";
   }

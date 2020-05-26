@@ -84,7 +84,7 @@ main {
   }
 
   .radio-cont {
-    width: 49%;
+    width: 75%;
     height: 48px;
     display: inline-block;
     padding: 13px 0px;
@@ -94,11 +94,12 @@ main {
     border: 0px;
     width: 22px;
     height: 22px;
+    display: table-cell;
+    vertical-align: middle;
   }
 
   .labelMiles {
-    font-size: 13px;
-    vertical-align: top;
+    font-size: 14px;
     font-weight: 700;
   }
 
@@ -148,7 +149,7 @@ main {
           position: absolute;
           width: 20px;
           top: 35%;
-          left: 16%;
+          left: 21%;
           transform: rotate(-90deg);
         }
         .open {
@@ -157,8 +158,9 @@ main {
         .label-text {
           font-size: 14px;
           position: absolute;
-          top: 38%;
-          left: 26%;
+          top: 27%;
+          left: 33%;
+          width: 66%;
         }
       }
 
@@ -252,7 +254,7 @@ main {
     p {
       margin: 10px 0px;
       display: inline-block;
-      width: 80%;
+      width: 68%;
       span {
         font-weight: 700;
         display: block;
@@ -322,6 +324,9 @@ footer {
 // I basically made it a large version of the phone layout.
 @media screen and (min-width: 600px) {
   main {
+    .radio-cont {
+      width: 48%;
+    }
     form {
       width: 75%;
       .labelMiles {
@@ -333,6 +338,20 @@ footer {
     }
     #accordionMain {
       width: 75%;
+      .topLvlAccItem {
+        .topLvlLabel {
+          .menu-icon {
+            left: 2%;
+          }
+          .menu-arrow {
+            left: 21%;
+          }
+          .label-text {
+            top: 40%;
+            left: 28%;
+          }
+        }
+      }
     }
     #program-info {
       width: 75%;
